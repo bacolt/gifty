@@ -1,45 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import confetti from 'canvas-confetti';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { FlowLayout } from '@/components/AddPersonFlow/FlowLayout';
 import { useAddPerson } from '@/context/AddPersonContext';
 
-// Dynamic import for react-confetti (will fail gracefully if not installed)
-let Confetti: any = null;
-try {
-  Confetti = require('react-confetti').default;
-} catch {
-  // Library not installed, will use CSS-only animation
-}
-
 export function SuccessPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { resetForm } = useAddPerson();
-  const [showConfetti, setShowConfetti] = useState(true);
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
-
+ 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
+    try {
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { y: 0.6 },
       });
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowConfetti(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
+    } catch {
+      // If canvas-confetti fails for any reason, just skip the effect
+    }
   }, []);
 
   useEffect(() => {
@@ -54,14 +34,6 @@ export function SuccessPage() {
 
   return (
     <>
-      {showConfetti && Confetti && (
-        <Confetti
-          width={windowSize.width}
-          height={windowSize.height}
-          recycle={false}
-          numberOfPieces={200}
-        />
-      )}
       <FlowLayout stepNumber={4} stepTitle="Success">
         <div className="flex flex-col items-center justify-center py-12">
           <div className="relative mb-6">
