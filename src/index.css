@@ -1,0 +1,23 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #19e6d4;
+  --color-background-light: #fbfbf9;
+  --color-background-dark: #112120;
+  --font-display: 'Manrope', sans-serif;
+  --radius: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+body {
+  font-family: var(--font-display);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
