@@ -1,3 +1,4 @@
+import { Icon } from './Icon';
 import { Input } from './Input';
 
 interface SocialInputProps {
@@ -9,9 +10,9 @@ interface SocialInputProps {
 }
 
 const networkIcons: Record<string, string> = {
-  instagram: 'photo_camera',
-  tiktok: 'videocam',
-  linkedin: 'work',
+  instagram: 'camera',
+  tiktok: 'camera-video',
+  linkedin: 'briefcase',
   facebook: 'person',
 };
 
@@ -39,7 +40,7 @@ export function SocialInput({
       </label>
       <div className="relative">
         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#638885] pointer-events-none">
-          <span className="material-symbols-outlined text-xl">{icon}</span>
+          <Icon name={icon} className="text-xl" />
         </span>
         <Input
           value={value}

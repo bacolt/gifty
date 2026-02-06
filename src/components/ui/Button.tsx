@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'text';
@@ -39,11 +40,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {icon && iconPosition === 'left' && (
-          <span className="material-symbols-outlined text-[18px]">{icon}</span>
+          <Icon name={icon} className="text-[18px]" />
         )}
         {children}
         {icon && iconPosition === 'right' && (
-          <span className="material-symbols-outlined text-[18px]">{icon}</span>
+          <Icon name={icon} className="text-[18px]" />
         )}
       </button>
     );

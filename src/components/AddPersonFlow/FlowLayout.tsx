@@ -4,10 +4,11 @@ import { DashboardHeader } from '@/components/DashboardHeader';
 interface FlowLayoutProps {
   stepNumber: number;
   stepTitle: string;
+  pageHeading?: React.ReactNode;
   children: React.ReactNode;
 }
 
-export function FlowLayout({ stepNumber, stepTitle, children }: FlowLayoutProps) {
+export function FlowLayout({ stepNumber, stepTitle, pageHeading, children }: FlowLayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background-light">
       <DashboardHeader />
@@ -18,6 +19,11 @@ export function FlowLayout({ stepNumber, stepTitle, children }: FlowLayoutProps)
           stepTitle={stepTitle}
           showFlowLabel={stepNumber === 1}
         />
+        {pageHeading && (
+          <h1 className="text-4xl font-bold text-[#111817] mb-2 mt-6 text-center py-6">
+            {pageHeading}
+          </h1>
+        )}
         <div className="bg-white rounded-xl border border-[#e5e7eb] shadow-sm p-8">
           {children}
         </div>

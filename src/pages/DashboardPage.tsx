@@ -4,6 +4,7 @@ import {
   dashboardPeople,
 } from '@/data/dashboardMockData';
 import { PersonCard } from '@/components/PersonCard';
+import { Icon } from '@/components/ui/Icon';
 
 export function DashboardPage() {
   return (
@@ -30,9 +31,7 @@ export function DashboardPage() {
               className="text-sm font-bold text-primary flex items-center gap-1 hover:opacity-90"
             >
               View full calendar
-              <span className="material-symbols-outlined text-sm">
-                chevron_right
-              </span>
+              <Icon name="chevron-right" className="text-sm" />
             </Link>
           </div>
           <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar snap-x">
@@ -49,13 +48,10 @@ export function DashboardPage() {
                     </div>
                   )}
                   <div className="flex items-center gap-3 mb-3 pt-2">
-                    <span
-                      className={`material-symbols-outlined ${
-                        index === 0 ? 'text-primary' : 'text-[#638885]'
-                      }`}
-                    >
-                      {event.icon}
-                    </span>
+                    <Icon
+                      name={event.icon}
+                      className={index === 0 ? 'text-primary' : 'text-[#638885]'}
+                    />
                     <p className="text-sm font-bold text-[#111817]">
                       {event.title}
                     </p>
@@ -68,7 +64,7 @@ export function DashboardPage() {
             ))}
             <div className="flex-none w-48 snap-start flex items-center justify-center border-2 border-dashed border-[#dce5e4] rounded-xl cursor-pointer hover:bg-white/50 transition-colors min-h-[120px]">
               <div className="flex flex-col items-center gap-1 text-[#638885]">
-                <span className="material-symbols-outlined">add</span>
+                <Icon name="plus" />
                 <span className="text-xs font-bold uppercase">Add Event</span>
               </div>
             </div>
@@ -86,18 +82,14 @@ export function DashboardPage() {
                 type="button"
                 className="bg-white border border-[#e5e7eb] px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 text-[#111817]"
               >
-                <span className="material-symbols-outlined text-sm">
-                  filter_list
-                </span>
+<Icon name="filter" className="text-sm" />
                 Filter
               </button>
               <Link
                 to="/add-person/step-1"
                 className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90"
               >
-                <span className="material-symbols-outlined text-sm">
-                  person_add
-                </span>
+                <Icon name="person-plus" className="text-sm" />
                 Add Person
               </Link>
             </div>
@@ -115,7 +107,7 @@ export function DashboardPage() {
                 statusLabel={person.statusLabel}
                 likes={person.likes}
                 buttonLabel={person.buttonLabel}
-                buttonIcon={person.buttonType === 'plan' ? 'edit_calendar' : 'local_shipping'}
+                buttonIcon={person.buttonType === 'plan' ? 'calendar-event' : 'truck'}
               />
             ))}
           </div>
@@ -127,7 +119,7 @@ export function DashboardPage() {
           type="button"
           className="bg-background-dark text-white p-4 rounded-full shadow-2xl flex items-center gap-2 hover:scale-105 transition-transform active:scale-95"
         >
-          <span className="material-symbols-outlined">auto_awesome</span>
+          <Icon name="stars" />
           <span className="text-sm font-bold pr-2">Get AI Ideas</span>
         </button>
       </div>

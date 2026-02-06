@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/Button';
+import { Icon } from '@/components/ui/Icon';
 
 interface StepNavigationProps {
   stepNumber: number;
@@ -28,7 +29,7 @@ export function StepNavigation({
             onClick={onBack}
             className="text-[#111817] hover:text-primary transition-colors flex items-center gap-1"
           >
-            <span className="material-symbols-outlined text-sm">arrow_back</span>
+            <Icon name="arrow-left" className="text-sm" />
             BACK
           </button>
         )}
@@ -39,7 +40,7 @@ export function StepNavigation({
           onClick={onContinue}
           disabled={isLoading}
           fullWidth
-          icon="arrow_forward"
+          icon="arrow-right"
           iconPosition="right"
         >
           {continueLabel}

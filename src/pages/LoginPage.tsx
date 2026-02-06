@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { Icon } from '@/components/ui/Icon';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 
@@ -86,9 +87,10 @@ export function LoginPage() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-[#638885] hover:text-[#111817] transition-colors"
               >
-                <span className="material-symbols-outlined text-xl">
-                  {showPassword ? 'visibility_off' : 'visibility'}
-                </span>
+                <Icon
+                  name={showPassword ? 'eye-slash' : 'eye'}
+                  className="text-xl"
+                />
               </button>
             </div>
 
@@ -111,7 +113,7 @@ export function LoginPage() {
               type="submit"
               fullWidth
               disabled={isLoading}
-              icon="arrow_forward"
+              icon="arrow-right"
               iconPosition="right"
               className="py-3 text-base"
             >

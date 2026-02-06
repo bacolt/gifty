@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
+import { Icon } from '@/components/ui/Icon';
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -27,9 +28,7 @@ export function LandingPage() {
       <header className="max-w-[1120px] w-full mx-auto px-6 pt-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="h-9 w-9 rounded-xl bg-primary flex items-center justify-center text-white shadow-md">
-            <span className="material-symbols-outlined text-[20px]">
-              card_giftcard
-            </span>
+            <Icon name="gift" className="text-[20px]" />
           </div>
           <span className="text-[#111817] font-bold text-lg tracking-tight">
             GiftPlanner
@@ -71,9 +70,7 @@ export function LandingPage() {
                   className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white font-bold text-sm shadow-lg shadow-primary/40 hover:opacity-90 transition-colors"
                 >
                   Get Started
-                  <span className="material-symbols-outlined text-[18px] ml-1">
-                    arrow_forward
-                  </span>
+                  <Icon name="arrow-right" className="text-[18px] ml-1" />
                 </Link>
                 <a
                   href="#how-it-works"
@@ -94,9 +91,7 @@ export function LandingPage() {
           <div className="max-w-[1120px] w-full mx-auto px-6 py-10 grid gap-10 md:grid-cols-3 text-center md:text-left">
             <div className="space-y-3">
               <div className="inline-flex h-10 w-10 rounded-full bg-primary/10 items-center justify-center text-primary mb-1">
-                <span className="material-symbols-outlined text-[20px]">
-                  auto_awesome
-                </span>
+                <Icon name="stars" className="text-[20px]" />
               </div>
               <h3 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
                 Curated Choices
@@ -108,9 +103,7 @@ export function LandingPage() {
             </div>
             <div className="space-y-3">
               <div className="inline-flex h-10 w-10 rounded-full bg-primary/10 items-center justify-center text-primary mb-1">
-                <span className="material-symbols-outlined text-[20px]">
-                  schedule
-                </span>
+                <Icon name="calendar-event" className="text-[20px]" />
               </div>
               <h3 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
                 Effortless Timing
@@ -122,9 +115,7 @@ export function LandingPage() {
             </div>
             <div className="space-y-3">
               <div className="inline-flex h-10 w-10 rounded-full bg-primary/10 items-center justify-center text-primary mb-1">
-                <span className="material-symbols-outlined text-[20px]">
-                  favorite
-                </span>
+                <Icon name="heart" className="text-[20px]" />
               </div>
               <h3 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
                 Emotional Connection

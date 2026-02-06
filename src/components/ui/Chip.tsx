@@ -1,3 +1,5 @@
+import { Icon } from '@/components/ui/Icon';
+
 interface ChipProps {
   label: string;
   onDelete?: () => void;
@@ -31,7 +33,7 @@ export function Chip({ label, onDelete, variant = 'default', onClick }: ChipProp
           className="ml-1 hover:bg-primary/20 rounded-full p-0.5 transition-colors"
           aria-label={`Remove ${label}`}
         >
-          <span className="material-symbols-outlined text-sm">close</span>
+          <Icon name="x" className="text-sm" />
         </button>
       )}
     </div>

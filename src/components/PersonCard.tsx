@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Icon } from '@/components/ui/Icon';
 
 interface PersonCardProps {
   to: string;
@@ -59,7 +60,7 @@ export function PersonCard({
           className="text-[#638885] hover:text-primary transition-colors p-1"
           aria-label="More options"
         >
-          <span className="material-symbols-outlined">more_horiz</span>
+          <Icon name="three-dots" />
         </button>
       </div>
       <div className="bg-[#f8fafa] rounded-lg p-4 mb-6">
@@ -97,9 +98,7 @@ export function PersonCard({
         to={to}
         className="w-full bg-primary/10 hover:bg-primary text-primary hover:text-white py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 block text-center"
       >
-        <span className="material-symbols-outlined text-[18px]">
-          {buttonIcon}
-        </span>
+        <Icon name={buttonIcon} className="text-[18px]" />
         {buttonLabel}
       </Link>
     </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FlowLayout } from '@/components/AddPersonFlow/FlowLayout';
 import { StepNavigation } from '@/components/AddPersonFlow/StepNavigation';
+import { Icon } from '@/components/ui/Icon';
 import { Input } from '@/components/ui/Input';
 import { Chip } from '@/components/ui/Chip';
 import { useAddPerson } from '@/context/AddPersonContext';
@@ -55,7 +56,7 @@ export function Step2Interests() {
               className="pl-12"
             />
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#638885]">
-              <span className="material-symbols-outlined">search</span>
+              <Icon name="search" />
             </span>
           </div>
           {formData.interests.length > 0 && (
@@ -85,7 +86,7 @@ export function Step2Interests() {
             ))}
           </div>
           <div className="flex items-start gap-2 text-sm text-[#638885] mt-4">
-            <span className="material-symbols-outlined text-lg">eco</span>
+            <Icon name="flower1" className="text-lg" />
             <p>The more you add, the better our suggestions.</p>
           </div>
         </div>

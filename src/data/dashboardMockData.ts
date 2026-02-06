@@ -32,19 +32,19 @@ export const dashboardEvents: DashboardEvent[] = [
     id: 'de2',
     title: '10th Anniversary',
     dateLabel: 'October 28',
-    icon: 'favorite',
+    icon: 'heart',
   },
   {
     id: 'de3',
     title: "Dad's Retirement",
     dateLabel: 'November 05',
-    icon: 'work',
+    icon: 'briefcase',
   },
   {
     id: 'de4',
     title: "Leo's Housewarming",
     dateLabel: 'December 02',
-    icon: 'home',
+    icon: 'house',
   },
 ];
 

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { useNavigate } from 'react-router-dom';
+import { Icon } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { FlowLayout } from '@/components/AddPersonFlow/FlowLayout';
 import { useAddPerson } from '@/context/AddPersonContext';
@@ -35,9 +36,7 @@ export function SuccessPage() {
         <div className="flex flex-col items-center justify-center py-12">
           <div className="relative mb-6">
             <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center animate-scale-in">
-              <span className="material-symbols-outlined text-5xl text-primary animate-checkmark">
-                check_circle
-              </span>
+              <Icon name="check-circle" className="text-5xl text-primary animate-checkmark" />
             </div>
           </div>
           <h1 className="text-4xl font-bold text-[#111817] mb-4 text-center">
@@ -62,7 +61,7 @@ export function SuccessPage() {
                 resetForm();
                 navigate('/add-person/step-1');
               }}
-              icon="add"
+              icon="plus"
               iconPosition="left"
             >
               Add Another Person

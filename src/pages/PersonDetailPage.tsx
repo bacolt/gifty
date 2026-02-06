@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Icon } from '@/components/ui/Icon';
 import { usePerson } from '@/hooks/usePeople';
 import { useProfile } from '@/hooks/useProfiles';
 import { useEventsByPerson } from '@/hooks/useEvents';
@@ -148,9 +149,7 @@ export function PersonDetailPage() {
             to="/suggestions"
             className="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:opacity-90 flex items-center gap-2"
           >
-            <span className="material-symbols-outlined text-[18px]">
-              lightbulb
-            </span>
+            <Icon name="lightbulb" className="text-[18px]" />
             View Gift Ideas
           </Link>
         </div>

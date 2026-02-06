@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 interface DatePickerProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -27,7 +28,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
             {...props}
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#638885]">
-            <span className="material-symbols-outlined text-xl">calendar_today</span>
+            <Icon name="calendar-date" className="text-xl" />
           </span>
         </div>
         {error && <p className="mt-1 text-sm text-red-600">{error}</p>}

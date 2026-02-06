@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FlowLayout } from '@/components/AddPersonFlow/FlowLayout';
 import { StepNavigation } from '@/components/AddPersonFlow/StepNavigation';
+import { Icon } from '@/components/ui/Icon';
 import { DatePicker } from '@/components/ui/DatePicker';
 import { Select } from '@/components/ui/Select';
 import { Button } from '@/components/ui/Button';
@@ -84,7 +85,7 @@ export function Step3Calendar() {
                     className="text-[#638885] hover:text-red-600 transition-colors"
                     aria-label="Remove milestone"
                   >
-                    <span className="material-symbols-outlined">delete</span>
+                    <Icon name="trash" />
                   </button>
                 </div>
               ))}
@@ -109,7 +110,7 @@ export function Step3Calendar() {
               onClick={handleAddMilestone}
               disabled={!newMilestoneType || !newMilestoneDate}
               fullWidth
-              icon="add"
+              icon="plus"
               iconPosition="left"
             >
               {formData.milestones.length === 0

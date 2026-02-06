@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { FlowLayout } from '@/components/AddPersonFlow/FlowLayout';
 import { StepNavigation } from '@/components/AddPersonFlow/StepNavigation';
+import { Icon } from '@/components/ui/Icon';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
 import { useAddPerson } from '@/context/AddPersonContext';
@@ -18,10 +19,11 @@ export function Step1MainData() {
   };
 
   return (
-    <FlowLayout stepNumber={1} stepTitle="Basic Information">
-      <h1 className="text-3xl font-bold text-[#111817] mb-2">
-        Who are we <span className="text-primary">celebrating?</span>
-      </h1>
+    <FlowLayout stepNumber={1} stepTitle="Basic Information" pageHeading={
+      <>
+      Who are we <br/> <span className="text-primary italic">celebrating?</span>
+      </>
+    }>
       <div className="space-y-6 mt-8">
         <Input
           label="FULL NAME"
@@ -36,8 +38,8 @@ export function Step1MainData() {
           value={formData.relationship}
           onChange={(e) => updateFormData({ relationship: e.target.value })}
         />
-        <div className="flex items-start gap-2 text-sm text-[#638885] mt-4">
-          <span className="material-symbols-outlined text-lg">check_circle</span>
+        <div className="flex items-center justify-center gap-2 text-sm text-[#638885] mt-4 text-center">
+          <Icon name="check-circle" className="text-sm" />
           <p>You can always tweak these details later.</p>
         </div>
       </div>

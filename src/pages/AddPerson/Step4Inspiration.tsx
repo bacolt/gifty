@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Icon } from '@/components/ui/Icon';
 import { FlowLayout } from '@/components/AddPersonFlow/FlowLayout';
 import { StepNavigation } from '@/components/AddPersonFlow/StepNavigation';
 import { SocialInput } from '@/components/ui/SocialInput';
@@ -153,7 +154,7 @@ export function Step4Inspiration() {
                     onClick={() => handleRemoveAccount(account.platform)}
                     className="text-[#638885] hover:text-red-600"
                   >
-                    <span className="material-symbols-outlined">delete</span>
+                    <Icon name="trash" />
                   </button>
                 </div>
               </div>
@@ -179,14 +180,14 @@ export function Step4Inspiration() {
             onClick={handleAddOtherAccount}
             disabled={!newAccountPlatform || !newAccountUrl}
             fullWidth
-            icon="add"
+            icon="plus"
             iconPosition="left"
           >
             Add another
           </Button>
         </div>
         <div className="flex items-start gap-2 text-sm text-[#638885] mt-4">
-          <span className="material-symbols-outlined text-lg">help</span>
+          <Icon name="question-circle" className="text-lg" />
           <p>
             This helps our assistant analyze their interests and aesthetic for
             more tailored gift suggestions.

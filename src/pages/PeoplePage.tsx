@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
-import { formatDate } from '@/utils/formatDate';
+import { Icon } from '@/components/ui/Icon';
 import { PersonCard } from '@/components/PersonCard';
+import { formatDate } from '@/utils/formatDate';
 
 export function PeoplePage() {
   const { people } = useApp();
@@ -19,7 +20,7 @@ export function PeoplePage() {
           to="/add-person/step-1"
           className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90"
         >
-          <span className="material-symbols-outlined text-sm">person_add</span>
+          <Icon name="person-plus" className="text-sm" />
           Add Person
         </Link>
       </div>

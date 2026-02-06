@@ -15,14 +15,10 @@ export function ProgressBar({
 
   return (
     <div className="w-full mb-8">
-      {showFlowLabel && (
-        <p className="text-xs font-bold text-primary uppercase tracking-wider mb-2 text-center">
-          ONBOARDING FLOW
-        </p>
-      )}
+      {showFlowLabel}
       <div className="flex items-center justify-between mb-2">
         {stepTitle && (
-          <h2 className="text-2xl font-bold text-[#111817]">{stepTitle}</h2>
+          <h2 className="text-sm font-bold text-[#111817]">{stepTitle}</h2>
         )}
         <span className="text-sm text-[#638885]">
           Step {currentStep} of {totalSteps}

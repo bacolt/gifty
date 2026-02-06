@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         <input
           ref={ref}
-          className={`w-full px-4 py-3 rounded-xl border ${
+          className={`w-full px-4 py-3 rounded-[10px] border ${
             error
               ? 'border-red-300 bg-red-50'
               : 'border-[#e5e7eb] bg-[#f0f4f4] focus:border-primary'
