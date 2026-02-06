@@ -4,6 +4,7 @@
 
 export interface DatabasePerson {
   id: string;
+  user_id: string;
   name: string;
   birthday: string;
   relationship?: string | null;
@@ -28,7 +29,7 @@ export interface DatabaseEvent {
   person_id: string;
   title: string;
   date: string;
-  type: 'birthday' | 'anniversary' | 'other';
+  type: 'birthday' | 'anniversary' | 'name_day' | 'other';
   status?: string | null;
   created_at: string;
   updated_at: string;
@@ -47,10 +48,13 @@ export interface DatabaseGiftSuggestion {
 }
 
 // Insert types (omit id and timestamps)
+// Note: user_id is optional here because services add it automatically from auth
 export type InsertPerson = Omit<
   DatabasePerson,
-  'id' | 'created_at' | 'updated_at'
->;
+  'id' | 'user_id' | 'created_at' | 'updated_at'
+> & {
+  user_id?: string; // Added automatically by services
+};
 
 export type InsertProfile = Omit<
   DatabaseProfile,
@@ -76,4 +80,25 @@ export type UpdateEvent = Partial<Omit<DatabaseEvent, 'id' | 'created_at' | 'upd
 
 export type UpdateGiftSuggestion = Partial<
   Omit<DatabaseGiftSuggestion, 'id' | 'created_at' | 'updated_at'>
+>;
+
+export interface DatabaseSocialAccount {
+  id: string;
+  person_id: string;
+  platform: string;
+  username: string;
+  profile_url: string;
+  is_active: boolean;
+  last_checked_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export type InsertSocialAccount = Omit<
+  DatabaseSocialAccount,
+  'id' | 'last_checked_at' | 'created_at' | 'updated_at'
+>;
+
+export type UpdateSocialAccount = Partial<
+  Omit<DatabaseSocialAccount, 'id' | 'person_id' | 'last_checked_at' | 'created_at' | 'updated_at'>
 >;

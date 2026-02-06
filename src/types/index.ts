@@ -13,8 +13,18 @@ export interface Event {
   personId: string;
   title: string;
   date: string;
-  type: 'birthday' | 'anniversary' | 'other';
+  type: 'birthday' | 'anniversary' | 'name_day' | 'other';
   status?: string;
+}
+
+export interface SocialAccount {
+  id: string;
+  personId: string;
+  platform: string;
+  username: string;
+  profileUrl: string;
+  isActive: boolean;
+  lastCheckedAt?: string;
 }
 
 export interface Profile {

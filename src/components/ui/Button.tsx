@@ -1,0 +1,53 @@
+import { forwardRef } from 'react';
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'text';
+  icon?: string;
+  iconPosition?: 'left' | 'right';
+  fullWidth?: boolean;
+}
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant = 'primary',
+      icon,
+      iconPosition = 'right',
+      fullWidth = false,
+      className = '',
+      children,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
+    const baseClasses = 'px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2';
+    
+    const variantClasses = {
+      primary: 'bg-primary text-white hover:opacity-90 shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed',
+      secondary: 'bg-white border border-[#e5e7eb] text-[#111817] hover:bg-[#f0f4f4] disabled:opacity-50 disabled:cursor-not-allowed',
+      text: 'text-[#111817] hover:text-primary bg-transparent disabled:opacity-50 disabled:cursor-not-allowed',
+    };
+
+    const widthClass = fullWidth ? 'w-full' : '';
+
+    return (
+      <button
+        ref={ref}
+        className={`${baseClasses} ${variantClasses[variant]} ${widthClass} ${className}`}
+        disabled={disabled}
+        {...props}
+      >
+        {icon && iconPosition === 'left' && (
+          <span className="material-symbols-outlined text-[18px]">{icon}</span>
+        )}
+        {children}
+        {icon && iconPosition === 'right' && (
+          <span className="material-symbols-outlined text-[18px]">{icon}</span>
+        )}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';

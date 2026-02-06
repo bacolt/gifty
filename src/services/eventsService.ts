@@ -108,7 +108,10 @@ export async function updateEvent(
 }
 
 export async function deleteEvent(id: string): Promise<ServiceResponse<void>> {
-  const { error } = await supabase.from('events').delete().eq('id', id);
+  const { error } = await supabase
+    .from('events')
+    .delete()
+    .eq('id', id);
 
   if (error) {
     return createServiceResponse<void>(null, error);

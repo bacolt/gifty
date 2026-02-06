@@ -7,16 +7,19 @@ import type {
   DatabaseProfile,
   DatabaseEvent,
   DatabaseGiftSuggestion,
+  DatabaseSocialAccount,
   InsertPerson,
   InsertProfile,
   InsertEvent,
   InsertGiftSuggestion,
+  InsertSocialAccount,
 } from '@/types/database';
 import type {
   Person,
   Profile,
   Event,
   GiftSuggestion,
+  SocialAccount,
 } from '@/types';
 
 // Database → App
@@ -118,5 +121,32 @@ export function fromGiftSuggestion(
   if (suggestion.link !== undefined) result.link = suggestion.link ?? null;
   if (suggestion.category !== undefined)
     result.category = suggestion.category ?? null;
+  return result;
+}
+
+export function toSocialAccount(
+  dbAccount: DatabaseSocialAccount
+): SocialAccount {
+  return {
+    id: dbAccount.id,
+    personId: dbAccount.person_id,
+    platform: dbAccount.platform,
+    username: dbAccount.username,
+    profileUrl: dbAccount.profile_url,
+    isActive: dbAccount.is_active,
+    lastCheckedAt: dbAccount.last_checked_at ?? undefined,
+  };
+}
+
+export function fromSocialAccount(
+  account: Partial<SocialAccount>
+): Partial<InsertSocialAccount> {
+  const result: Partial<InsertSocialAccount> = {};
+  if (account.personId !== undefined) result.person_id = account.personId;
+  if (account.platform !== undefined) result.platform = account.platform;
+  if (account.username !== undefined) result.username = account.username;
+  if (account.profileUrl !== undefined)
+    result.profile_url = account.profileUrl;
+  if (account.isActive !== undefined) result.is_active = account.isActive;
   return result;
 }

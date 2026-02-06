@@ -3,6 +3,7 @@ import {
   dashboardEvents,
   dashboardPeople,
 } from '@/data/dashboardMockData';
+import { PersonCard } from '@/components/PersonCard';
 
 export function DashboardPage() {
   return (
@@ -91,7 +92,7 @@ export function DashboardPage() {
                 Filter
               </button>
               <Link
-                to="/people"
+                to="/add-person/step-1"
                 className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90"
               >
                 <span className="material-symbols-outlined text-sm">
@@ -103,98 +104,19 @@ export function DashboardPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {dashboardPeople.map((person) => (
-              <div
+              <PersonCard
                 key={person.id}
-                className="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-center gap-4">
-                    <div
-                      className="size-14 rounded-full bg-center bg-cover border-2 border-white shadow-sm flex-shrink-0"
-                      style={{
-                        backgroundImage: `url("${person.avatarUrl}")`,
-                      }}
-                      role="img"
-                      aria-label={`${person.name}`}
-                    />
-                    <div>
-                      <h3 className="text-lg font-bold text-[#111817]">
-                        {person.name}
-                      </h3>
-                      <p className="text-[#638885] text-sm">
-                        {person.relationship}
-                      </p>
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    className="text-[#638885] hover:text-primary transition-colors p-1"
-                    aria-label="More options"
-                  >
-                    <span className="material-symbols-outlined">
-                      more_horiz
-                    </span>
-                  </button>
-                </div>
-                <div
-                  className={`bg-[#f8fafa] rounded-lg p-4 mb-6 ${
-                    person.status === 'gift_ordered'
-                      ? 'border-l-4 border-green-400'
-                      : ''
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <p className="text-xs font-bold text-[#638885] uppercase tracking-wider">
-                      {person.status === 'gift_ordered' ? 'Status' : 'Next Event'}
-                    </p>
-                    <span
-                      className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                        person.status === 'coming_soon'
-                          ? 'text-primary bg-primary/10'
-                          : person.status === 'gift_ordered'
-                            ? 'text-green-600 bg-green-100'
-                            : 'text-[#638885] bg-gray-100'
-                      }`}
-                    >
-                      {person.statusLabel}
-                    </span>
-                  </div>
-                  <p className="text-sm font-bold text-[#111817]">
-                    {person.nextEventLabel}
-                  </p>
-                  <div className="mt-3 flex gap-2 flex-wrap">
-                    {person.likes.map((like) => (
-                      <span
-                        key={like}
-                        className="text-[10px] bg-white px-2 py-1 rounded border border-[#e5e7eb] text-[#638885]"
-                      >
-                        Likes: {like}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {person.buttonType === 'plan' ? (
-                  <Link
-                    to="/suggestions"
-                    className="w-full bg-primary/10 hover:bg-primary text-primary hover:text-white py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2 block text-center"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">
-                      edit_calendar
-                    </span>
-                    {person.buttonLabel}
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className="w-full bg-[#f0f4f4] text-[#111817] py-3 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">
-                      local_shipping
-                    </span>
-                    {person.buttonLabel}
-                  </button>
-                )}
-              </div>
+                to="/suggestions"
+                name={person.name}
+                relationship={person.relationship}
+                avatarUrl={person.avatarUrl}
+                nextEventLabel={person.nextEventLabel}
+                status={person.status}
+                statusLabel={person.statusLabel}
+                likes={person.likes}
+                buttonLabel={person.buttonLabel}
+                buttonIcon={person.buttonType === 'plan' ? 'edit_calendar' : 'local_shipping'}
+              />
             ))}
           </div>
         </section>

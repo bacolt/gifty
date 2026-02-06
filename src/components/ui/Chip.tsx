@@ -1,0 +1,39 @@
+interface ChipProps {
+  label: string;
+  onDelete?: () => void;
+  variant?: 'default' | 'suggestion';
+  onClick?: () => void;
+}
+
+export function Chip({ label, onDelete, variant = 'default', onClick }: ChipProps) {
+  const isSuggestion = variant === 'suggestion';
+  const isClickable = onClick && !onDelete;
+
+  return (
+    <div
+      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+        isSuggestion
+          ? 'bg-white border border-[#e5e7eb] text-[#638885] hover:bg-[#f0f4f4] cursor-pointer'
+          : 'bg-primary/10 text-primary border border-primary/20'
+      } ${isClickable ? 'cursor-pointer hover:bg-primary/20' : ''}`}
+      onClick={onClick}
+      role={isClickable ? 'button' : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+    >
+      <span>{label}</span>
+      {onDelete && (
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
+          className="ml-1 hover:bg-primary/20 rounded-full p-0.5 transition-colors"
+          aria-label={`Remove ${label}`}
+        >
+          <span className="material-symbols-outlined text-sm">close</span>
+        </button>
+      )}
+    </div>
+  );
+}

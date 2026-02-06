@@ -2,7 +2,7 @@
  * Service for people table operations
  */
 
-import { supabase } from '@/lib/supabase';
+import { supabase, getCurrentUserId } from '@/lib/supabase';
 import { createServiceResponse, type ServiceResponse } from './base';
 import { toPerson, toProfile } from '@/utils/transformers';
 import type { Person } from '@/types';
@@ -14,9 +14,17 @@ import type {
 } from '@/types/database';
 
 export async function getAllPeople(): Promise<ServiceResponse<Person[]>> {
+  const userId = await getCurrentUserId();
+  if (!userId) {
+    return createServiceResponse<Person[]>(null, {
+      message: 'User must be authenticated',
+    } as Error);
+  }
+
   const { data, error } = await supabase
     .from('people')
     .select('*')
+    .eq('user_id', userId)
     .order('name', { ascending: true });
 
   if (error) {
@@ -32,10 +40,18 @@ export async function getAllPeople(): Promise<ServiceResponse<Person[]>> {
 export async function getPersonById(
   id: string
 ): Promise<ServiceResponse<Person>> {
+  const userId = await getCurrentUserId();
+  if (!userId) {
+    return createServiceResponse<Person>(null, {
+      message: 'User must be authenticated',
+    } as Error);
+  }
+
   const { data, error } = await supabase
     .from('people')
     .select('*')
     .eq('id', id)
+    .eq('user_id', userId)
     .single();
 
   if (error) {
@@ -48,9 +64,16 @@ export async function getPersonById(
 export async function createPerson(
   person: InsertPerson
 ): Promise<ServiceResponse<Person>> {
+  const userId = await getCurrentUserId();
+  if (!userId) {
+    return createServiceResponse<Person>(null, {
+      message: 'User must be authenticated',
+    } as Error);
+  }
+
   const { data, error } = await supabase
     .from('people')
-    .insert(person)
+    .insert({ ...person, user_id: userId })
     .select()
     .single();
 
@@ -65,10 +88,18 @@ export async function updatePerson(
   id: string,
   updates: UpdatePerson
 ): Promise<ServiceResponse<Person>> {
+  const userId = await getCurrentUserId();
+  if (!userId) {
+    return createServiceResponse<Person>(null, {
+      message: 'User must be authenticated',
+    } as Error);
+  }
+
   const { data, error } = await supabase
     .from('people')
     .update(updates)
     .eq('id', id)
+    .eq('user_id', userId)
     .select()
     .single();
 
@@ -82,7 +113,18 @@ export async function updatePerson(
 export async function deletePerson(
   id: string
 ): Promise<ServiceResponse<void>> {
-  const { error } = await supabase.from('people').delete().eq('id', id);
+  const userId = await getCurrentUserId();
+  if (!userId) {
+    return createServiceResponse<void>(null, {
+      message: 'User must be authenticated',
+    } as Error);
+  }
+
+  const { error } = await supabase
+    .from('people')
+    .delete()
+    .eq('id', id)
+    .eq('user_id', userId);
 
   if (error) {
     return createServiceResponse<void>(null, error);
@@ -94,10 +136,20 @@ export async function deletePerson(
 export async function getPersonWithProfile(
   id: string
 ): Promise<ServiceResponse<Person & { profile?: import('@/types').Profile }>> {
+  const userId = await getCurrentUserId();
+  if (!userId) {
+    return createServiceResponse<
+      Person & { profile?: import('@/types').Profile }
+    >(null, {
+      message: 'User must be authenticated',
+    } as Error);
+  }
+
   const { data, error } = await supabase
     .from('people')
     .select('*, profiles(*)')
     .eq('id', id)
+    .eq('user_id', userId)
     .single();
 
   if (error) {

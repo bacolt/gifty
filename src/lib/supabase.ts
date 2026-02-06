@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import type { User } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -10,6 +11,33 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+/**
+ * Get the current authenticated user
+ */
+export async function getCurrentUser(): Promise<User | null> {
+  const { data: { user } } = await supabase.auth.getUser();
+  return user;
+}
+
+/**
+ * Get the current user ID (convenience function)
+ */
+export async function getCurrentUserId(): Promise<string | null> {
+  const user = await getCurrentUser();
+  return user?.id || null;
+}
+
+/**
+ * Require authentication - throws if user is not authenticated
+ */
+export async function requireAuth(): Promise<string> {
+  const userId = await getCurrentUserId();
+  if (!userId) {
+    throw new Error('User must be authenticated');
+  }
+  return userId;
+}
 
 /**
  * Check if the app can reach Supabase (valid URL + anon key).
