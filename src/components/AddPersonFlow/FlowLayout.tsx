@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { DashboardHeader } from '@/components/DashboardHeader';
 

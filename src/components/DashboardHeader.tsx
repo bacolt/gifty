@@ -2,9 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 
-const placeholderAvatar =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDw8a_cPeg-rHOaXaNxgAYXd5QhAEJeEly0j1xy5Jae1gSS-c-3l5zRj_BpIBRYOPOlmrfwUJos8ho4YlawerRLJ_ySIrkckPPpLPj_pu85ACWTt4VoV1A9IfFIDsvncq1tptsp2ysinBVMKoPwd0LHliweUqXl5dtXrvfm8TIyXB80kbxgzguWNBytLQp5Gic3A5JP0PUkvSBkVcsVZ78fT_jlL8AKCr55b_aQMEmXbAVYAIl6Df_OCOlvCs3AO6n0-Rp1rO2jnAA';
-
 export function DashboardHeader() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();

@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { FlowLayout } from '@/components/AddPersonFlow/FlowLayout';
 import { useAddPerson } from '@/context/AddPersonContext';
 
 export function SuccessPage() {
   const navigate = useNavigate();
-  const location = useLocation();
   const { resetForm } = useAddPerson();
  
   useEffect(() => {
@@ -29,8 +28,6 @@ export function SuccessPage() {
 
     return () => clearTimeout(redirectTimer);
   }, [navigate]);
-
-  const personId = location.state?.personId;
 
   return (
     <>

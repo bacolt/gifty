@@ -12,13 +12,20 @@ import type {
   InsertPerson,
   UpdatePerson,
 } from '@/types/database';
+import type { PostgrestError } from '@supabase/supabase-js';
+
+const unauthenticatedError: PostgrestError = {
+  message: 'User must be authenticated',
+  code: '401',
+  details: '',
+  hint: '',
+  name: 'AuthError',
+};
 
 export async function getAllPeople(): Promise<ServiceResponse<Person[]>> {
   const userId = await getCurrentUserId();
   if (!userId) {
-    return createServiceResponse<Person[]>(null, {
-      message: 'User must be authenticated',
-    } as Error);
+    return createServiceResponse<Person[]>(null, unauthenticatedError);
   }
 
   const { data, error } = await supabase
@@ -42,9 +49,7 @@ export async function getPersonById(
 ): Promise<ServiceResponse<Person>> {
   const userId = await getCurrentUserId();
   if (!userId) {
-    return createServiceResponse<Person>(null, {
-      message: 'User must be authenticated',
-    } as Error);
+    return createServiceResponse<Person>(null, unauthenticatedError);
   }
 
   const { data, error } = await supabase
@@ -66,9 +71,7 @@ export async function createPerson(
 ): Promise<ServiceResponse<Person>> {
   const userId = await getCurrentUserId();
   if (!userId) {
-    return createServiceResponse<Person>(null, {
-      message: 'User must be authenticated',
-    } as Error);
+    return createServiceResponse<Person>(null, unauthenticatedError);
   }
 
   const { data, error } = await supabase
@@ -90,9 +93,7 @@ export async function updatePerson(
 ): Promise<ServiceResponse<Person>> {
   const userId = await getCurrentUserId();
   if (!userId) {
-    return createServiceResponse<Person>(null, {
-      message: 'User must be authenticated',
-    } as Error);
+    return createServiceResponse<Person>(null, unauthenticatedError);
   }
 
   const { data, error } = await supabase
@@ -115,9 +116,7 @@ export async function deletePerson(
 ): Promise<ServiceResponse<void>> {
   const userId = await getCurrentUserId();
   if (!userId) {
-    return createServiceResponse<void>(null, {
-      message: 'User must be authenticated',
-    } as Error);
+    return createServiceResponse<void>(null, unauthenticatedError);
   }
 
   const { error } = await supabase
@@ -140,9 +139,7 @@ export async function getPersonWithProfile(
   if (!userId) {
     return createServiceResponse<
       Person & { profile?: import('@/types').Profile }
-    >(null, {
-      message: 'User must be authenticated',
-    } as Error);
+    >(null, unauthenticatedError);
   }
 
   const { data, error } = await supabase

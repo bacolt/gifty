@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { useAddPerson } from '@/context/AddPersonContext';
 import { socialNetworkOptions } from '@/constants/socialNetworks';
 
-function extractUsernameFromUrl(url: string, platform: string): string {
+function extractUsernameFromUrl(url: string, _platform: string): string {
   try {
     const urlObj = new URL(url.startsWith('http') ? url : `https://${url}`);
     const pathname = urlObj.pathname.replace(/^\//, '').replace(/\/$/, '');
