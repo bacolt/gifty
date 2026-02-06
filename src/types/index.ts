@@ -2,6 +2,8 @@ export interface Person {
   id: string;
   name: string;
   birthday: string;
+  relationship?: string;
+  avatarUrl?: string;
   notes?: string;
   profileId?: string;
 }
@@ -12,6 +14,7 @@ export interface Event {
   title: string;
   date: string;
   type: 'birthday' | 'anniversary' | 'other';
+  status?: string;
 }
 
 export interface Profile {

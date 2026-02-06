@@ -1,17 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '@/context/AppContext';
-import { mockGiftSuggestions } from '@/data/mockData';
+import { useGiftSuggestions } from '@/hooks/useGiftSuggestions';
 
 export function SuggestionPage() {
   const { people, selectedPersonId } = useApp();
   const navigate = useNavigate();
+  const { suggestions, loading, error } = useGiftSuggestions(
+    selectedPersonId || ''
+  );
 
   const selectedPerson = selectedPersonId
     ? people.find((p) => p.id === selectedPersonId)
     : null;
-  const suggestions = selectedPersonId
-    ? mockGiftSuggestions.filter((g) => g.personId === selectedPersonId)
-    : [];
 
   if (!selectedPersonId || !selectedPerson) {
     return (
@@ -41,14 +41,22 @@ export function SuggestionPage() {
       <p className="text-slate-600 mb-4">
         Suggestions based on profile and interests.
       </p>
-      <ul className="space-y-4">
-        {suggestions.length === 0 ? (
-          <li className="bg-white rounded-lg border border-slate-200 p-4 text-slate-500">
-            No suggestions yet. Add interests and hints in the person&apos;s
-            profile.
-          </li>
-        ) : (
-          suggestions.map((s) => (
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
+          Error loading suggestions: {error}
+        </div>
+      )}
+      {loading ? (
+        <div className="text-slate-500">Loading suggestions...</div>
+      ) : (
+        <ul className="space-y-4">
+          {suggestions.length === 0 ? (
+            <li className="bg-white rounded-lg border border-slate-200 p-4 text-slate-500">
+              No suggestions yet. Add interests and hints in the person&apos;s
+              profile.
+            </li>
+          ) : (
+            suggestions.map((s) => (
             <li
               key={s.id}
               className="bg-white rounded-lg border border-slate-200 p-4 shadow-sm"
@@ -62,9 +70,10 @@ export function SuggestionPage() {
                 </span>
               )}
             </li>
-          ))
-        )}
-      </ul>
+            ))
+          )}
+        </ul>
+      )}
     </div>
   );
 }

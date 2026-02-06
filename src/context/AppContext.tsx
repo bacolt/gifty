@@ -2,14 +2,13 @@ import {
   createContext,
   useContext,
   useState,
+  useEffect,
   useCallback,
   type ReactNode,
 } from 'react';
 import type { Person, Event } from '@/types';
-import {
-  mockPeople,
-  mockEvents,
-} from '@/data/mockData';
+import { usePeople } from '@/hooks/usePeople';
+import { useEvents } from '@/hooks/useEvents';
 
 interface AppState {
   people: Person[];
@@ -25,28 +24,42 @@ interface AppContextValue extends AppState {
 
 const AppContext = createContext<AppContextValue | null>(null);
 
-const initialState: AppState = {
-  people: mockPeople,
-  events: mockEvents,
-  selectedPersonId: null,
-};
-
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [people, setPeople] = useState<Person[]>(initialState.people);
-  const [events, setEvents] = useState<Event[]>(initialState.events);
+  const { people: fetchedPeople } = usePeople();
+  const { events: fetchedEvents } = useEvents();
+
+  const [people, setPeople] = useState<Person[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [selectedPersonId, setSelectedPersonId] = useState<string | null>(
-    initialState.selectedPersonId
+    null
   );
+
+  // Sync fetched data with context state
+  useEffect(() => {
+    if (fetchedPeople) {
+      setPeople(fetchedPeople);
+    }
+  }, [fetchedPeople]);
+
+  useEffect(() => {
+    if (fetchedEvents) {
+      setEvents(fetchedEvents);
+    }
+  }, [fetchedEvents]);
 
   const setPeopleSafe = useCallback(
     (value: Person[] | ((prev: Person[]) => Person[])) => {
       setPeople(value);
+      // Optionally refetch after manual update
+      // refetchPeople();
     },
     []
   );
   const setEventsSafe = useCallback(
     (value: Event[] | ((prev: Event[]) => Event[])) => {
       setEvents(value);
+      // Optionally refetch after manual update
+      // refetchEvents();
     },
     []
   );
