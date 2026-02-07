@@ -20,14 +20,14 @@ export function FlowLayout({ stepNumber, stepTitle, pageHeading, children }: Flo
           showFlowLabel={stepNumber === 1}
         />
         {pageHeading && (
-          <h1 className="text-4xl font-bold text-[#111817] mb-2 mt-6 text-center py-6">
+          <h1 className="text-4xl font-bold text-foreground mb-2 mt-6 text-center py-6">
             {pageHeading}
           </h1>
         )}
-        <div className="bg-white rounded-xl border border-[#e5e7eb] shadow-sm p-8">
+        <div className="bg-white rounded-xl border border-border shadow-sm pt-6 px-8 pb-8">
           {children}
         </div>
-        <footer className="mt-12 text-center text-sm text-[#638885]">
+        <footer className="mt-12 text-center text-sm text-muted">
           © 2024 GiftPlanner. Helping you build meaningful connections.
         </footer>
       </div>

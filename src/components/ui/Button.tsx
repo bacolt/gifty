@@ -25,9 +25,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const baseClasses = 'px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center justify-center gap-2';
     
     const variantClasses = {
-      primary: 'bg-primary text-white hover:opacity-90 shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed',
-      secondary: 'bg-white border border-[#e5e7eb] text-[#111817] hover:bg-[#f0f4f4] disabled:opacity-50 disabled:cursor-not-allowed',
-      text: 'text-[#111817] hover:text-primary bg-transparent disabled:opacity-50 disabled:cursor-not-allowed',
+      primary: 'bg-primary text-foreground hover:opacity-90 shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed',
+      secondary: 'bg-white border border-border text-foreground hover:bg-surface disabled:opacity-50 disabled:cursor-not-allowed',
+      text: 'text-foreground hover:text-primary bg-transparent disabled:opacity-50 disabled:cursor-not-allowed',
     };
 
     const widthClass = fullWidth ? 'w-full' : '';

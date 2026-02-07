@@ -11,10 +11,10 @@ export function DashboardPage() {
     <>
       {/* Hero */}
       <div className="max-w-[800px] mb-12">
-          <h1 className="text-[#111817] tracking-tight text-4xl lg:text-5xl font-bold leading-tight pb-3">
+          <h1 className="text-foreground tracking-tight text-4xl lg:text-5xl font-bold leading-tight pb-3">
             You've got time — let's plan this.
           </h1>
-          <p className="text-[#638885] text-lg">
+          <p className="text-muted text-lg">
             Thoughtful gifts take time. Here's what's coming up on your
             horizon.
           </p>
@@ -23,7 +23,7 @@ export function DashboardPage() {
         {/* Upcoming Horizon */}
         <section className="mb-16">
           <div className="flex items-center justify-between mb-6 px-2">
-            <h2 className="text-[#111817] text-2xl font-bold tracking-tight">
+            <h2 className="text-foreground text-2xl font-bold tracking-tight">
               Upcoming Horizon
             </h2>
             <Link
@@ -38,7 +38,7 @@ export function DashboardPage() {
             {dashboardEvents.map((event, index) => (
               <div key={event.id} className="flex-none w-64 snap-start">
                 <div
-                  className={`bg-white p-5 rounded-xl border border-[#e5e7eb] relative ${
+                  className={`bg-white p-5 rounded-xl border border-border relative ${
                     index === 0 ? '' : 'opacity-70 hover:opacity-100 transition-opacity'
                   }`}
                 >
@@ -50,20 +50,20 @@ export function DashboardPage() {
                   <div className="flex items-center gap-3 mb-3 pt-2">
                     <Icon
                       name={event.icon}
-                      className={index === 0 ? 'text-primary' : 'text-[#638885]'}
+                      className={index === 0 ? 'text-primary' : 'text-muted'}
                     />
-                    <p className="text-sm font-bold text-[#111817]">
+                    <p className="text-sm font-bold text-foreground">
                       {event.title}
                     </p>
                   </div>
-                  <p className="text-[#638885] text-xs font-medium uppercase tracking-widest">
+                  <p className="text-muted text-xs font-medium uppercase tracking-widest">
                     {event.dateLabel}
                   </p>
                 </div>
               </div>
             ))}
-            <div className="flex-none w-48 snap-start flex items-center justify-center border-2 border-dashed border-[#dce5e4] rounded-xl cursor-pointer hover:bg-white/50 transition-colors min-h-[120px]">
-              <div className="flex flex-col items-center gap-1 text-[#638885]">
+            <div className="flex-none w-48 snap-start flex items-center justify-center border-2 border-dashed border-border-muted rounded-xl cursor-pointer hover:bg-white/50 transition-colors min-h-[120px]">
+              <div className="flex flex-col items-center gap-1 text-muted">
                 <Icon name="plus" />
                 <span className="text-xs font-bold uppercase">Add Event</span>
               </div>
@@ -74,13 +74,13 @@ export function DashboardPage() {
         {/* Your People */}
         <section>
           <div className="flex items-center justify-between mb-8 px-2">
-            <h2 className="text-[#111817] text-2xl font-bold tracking-tight">
+            <h2 className="text-foreground text-2xl font-bold tracking-tight">
               Your People
             </h2>
             <div className="flex gap-2">
               <button
                 type="button"
-                className="bg-white border border-[#e5e7eb] px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 text-[#111817]"
+                className="bg-white border border-border px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 text-foreground"
               >
 <Icon name="filter" className="text-sm" />
                 Filter

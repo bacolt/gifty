@@ -5,6 +5,13 @@
   --color-primary: #19e6d4;
   --color-background-light: #fbfbf9;
   --color-background-dark: #112120;
+  /* Semantic colors – use these instead of hex in components */
+  --color-foreground: #111817;   /* main text, headings */
+  --color-muted: #638885;       /* secondary text, hints, placeholders */
+  --color-border: #e5e7eb;      /* default borders */
+  --color-border-muted: #dce5e4; /* dashed/lighter borders */
+  --color-surface: #f0f4f4;    /* input bg, hover states */
+  --color-surface-muted: #f8fafa; /* card grey, lighter surfaces */
   --font-display: 'Manrope', sans-serif;
   --radius: 0.5rem;
   --radius-lg: 1rem;

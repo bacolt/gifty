@@ -43,21 +43,23 @@ export function Step3Calendar() {
   };
 
   return (
-    <FlowLayout stepNumber={3} stepTitle="New Connection">
-      <h1 className="text-3xl font-bold text-[#111817] mb-2">
-        Mark your <span className="text-primary">calendar.</span>
-      </h1>
-      <p className="text-[#638885] text-lg mb-6">
+    <FlowLayout stepNumber={3} stepTitle="Special Days" pageHeading={
+      <>
+      Mark your <span className="text-primary italic">calendar.</span> 
+      <p className="text-muted text-sm text-center italic mt-4">
         We'll give you a gentle nudge before the big day.
       </p>
-      <div className="space-y-6 mt-8">
+      </>
+    }>
+      
+      <div className="space-y-6">
         <DatePicker
           label="BIRTHDAY"
           value={formData.birthday}
           onChange={(e) => updateFormData({ birthday: e.target.value })}
         />
         <div>
-          <label className="block text-xs font-bold text-[#638885] uppercase tracking-wider mb-3">
+          <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-3">
             OTHER MILESTONES
           </label>
           {formData.milestones.length > 0 && (
@@ -65,14 +67,14 @@ export function Step3Calendar() {
               {formData.milestones.map((milestone, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-3 bg-[#f8fafa] rounded-lg"
+                  className="flex items-center gap-3 p-3 bg-surface-muted rounded-lg"
                 >
                   <div className="flex-1 grid grid-cols-2 gap-3">
-                    <div className="px-3 py-2 bg-white rounded border border-[#e5e7eb] text-sm text-[#111817]">
+                    <div className="px-3 py-2 bg-white rounded border border-border text-sm text-foreground">
                       {eventTypeOptions.find((opt) => opt.value === milestone.type)
                         ?.label || milestone.type}
                     </div>
-                    <div className="px-3 py-2 bg-white rounded border border-[#e5e7eb] text-sm text-[#111817]">
+                    <div className="px-3 py-2 bg-white rounded border border-border text-sm text-foreground">
                       {new Date(milestone.date).toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',
@@ -82,7 +84,7 @@ export function Step3Calendar() {
                   <button
                     type="button"
                     onClick={() => handleRemoveMilestone(index)}
-                    className="text-[#638885] hover:text-red-600 transition-colors"
+                    className="text-muted hover:text-red-600 transition-colors"
                     aria-label="Remove milestone"
                   >
                     <Icon name="trash" />
@@ -91,7 +93,7 @@ export function Step3Calendar() {
               ))}
             </div>
           )}
-          <div className="border-2 border-dashed border-[#dce5e4] rounded-xl p-4">
+          <div className="border-2 border-dashed border-border-muted rounded-xl p-4">
             <div className="grid grid-cols-2 gap-3 mb-3">
               <Select
                 placeholder="Event Type"
@@ -125,7 +127,7 @@ export function Step3Calendar() {
         onBack={() => navigate('/add-person/step-2')}
         onContinue={handleContinue}
         onSkip={handleSkip}
-        continueLabel="Continue to Preferences"
+        continueLabel="Continue"
         canSkip={true}
       />
     </FlowLayout>

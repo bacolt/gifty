@@ -34,10 +34,10 @@ export function PersonCard({
       ? 'text-primary bg-primary/10'
       : status === 'gift_ordered'
         ? 'text-green-600 bg-green-100'
-        : 'text-[#638885] bg-gray-100';
+        : 'text-muted bg-gray-100';
 
   return (
-    <div className="bg-white p-6 rounded-xl border border-[#e5e7eb] shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white p-6 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between mb-6">
         <div className="flex items-center gap-4">
           <div
@@ -49,23 +49,23 @@ export function PersonCard({
             aria-label={name}
           />
           <div>
-            <h3 className="text-lg font-bold text-[#111817]">{name}</h3>
+            <h3 className="text-lg font-bold text-foreground">{name}</h3>
             {relationship && (
-              <p className="text-[#638885] text-sm">{relationship}</p>
+              <p className="text-muted text-sm">{relationship}</p>
             )}
           </div>
         </div>
         <button
           type="button"
-          className="text-[#638885] hover:text-primary transition-colors p-1"
+          className="text-muted hover:text-primary transition-colors p-1"
           aria-label="More options"
         >
           <Icon name="three-dots" />
         </button>
       </div>
-      <div className="bg-[#f8fafa] rounded-lg p-4 mb-6">
+      <div className="bg-surface-muted rounded-lg p-4 mb-6">
         <div className="flex items-center justify-between mb-2">
-          <p className="text-xs font-bold text-[#638885] uppercase tracking-wider">
+          <p className="text-xs font-bold text-muted uppercase tracking-wider">
             Next Event
           </p>
           <span
@@ -75,9 +75,9 @@ export function PersonCard({
           </span>
         </div>
         {nextEventLabel ? (
-          <p className="text-sm font-bold text-[#111817]">{nextEventLabel}</p>
+          <p className="text-sm font-bold text-foreground">{nextEventLabel}</p>
         ) : (
-          <p className="text-sm text-[#638885]">
+          <p className="text-sm text-muted">
             No upcoming events yet. Add a birthday or milestone to get started.
           </p>
         )}
@@ -86,7 +86,7 @@ export function PersonCard({
             {likes.map((like) => (
               <span
                 key={like}
-                className="text-[10px] bg-white px-2 py-1 rounded border border-[#e5e7eb] text-[#638885]"
+                className="text-[10px] bg-white px-2 py-1 rounded border border-border text-muted"
               >
                 Likes: {like}
               </span>

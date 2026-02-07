@@ -63,7 +63,7 @@ export function PersonDetailPage() {
 
   if (!personId) {
     return (
-      <div className="text-center text-[#638885] py-16">
+      <div className="text-center text-muted py-16">
         Person not found.
       </div>
     );
@@ -74,7 +74,7 @@ export function PersonDetailPage() {
       <div className="flex items-center justify-center py-16">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-          <p className="text-[#638885]">Loading person…</p>
+          <p className="text-muted">Loading person…</p>
         </div>
       </div>
     );
@@ -82,7 +82,7 @@ export function PersonDetailPage() {
 
   if (personError || !person) {
     return (
-      <div className="text-center text-[#638885] py-16">
+      <div className="text-center text-muted py-16">
         Unable to load this person.
       </div>
     );
@@ -105,7 +105,7 @@ export function PersonDetailPage() {
   return (
     <div className="space-y-8">
       {/* Header card */}
-      <div className="bg-white rounded-2xl border border-[#e5e7eb] p-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="bg-white rounded-2xl border border-border p-6 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-center gap-4">
           <div className="relative">
             {person.avatarUrl ? (
@@ -122,7 +122,7 @@ export function PersonDetailPage() {
           </div>
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <h1 className="text-2xl font-bold text-[#111817]">
+              <h1 className="text-2xl font-bold text-foreground">
                 {person.name}
               </h1>
               {person.relationship && (
@@ -132,7 +132,7 @@ export function PersonDetailPage() {
               )}
             </div>
             {birthdayEvent && (
-              <p className="text-sm text-[#638885]">
+              <p className="text-sm text-muted">
                 Birthday {formatDate(birthdayEvent.date)}
               </p>
             )}
@@ -141,7 +141,7 @@ export function PersonDetailPage() {
         <div className="flex flex-wrap gap-3">
           <Link
             to="/people"
-            className="px-4 py-2 rounded-lg border border-[#e5e7eb] text-sm font-semibold text-[#111817] hover:bg-[#f0f4f4]"
+            className="px-4 py-2 rounded-lg border border-border text-sm font-semibold text-foreground hover:bg-surface"
           >
             Back to People
           </Link>
@@ -159,27 +159,27 @@ export function PersonDetailPage() {
         {/* Left column: Interests + Important Dates */}
         <div className="space-y-6">
           {/* Interests */}
-          <section className="bg-white rounded-2xl border border-[#e5e7eb] p-5">
+          <section className="bg-white rounded-2xl border border-border p-5">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
+              <h2 className="text-sm font-bold text-foreground uppercase tracking-wider">
                 Interests
               </h2>
             </div>
             {profileLoading ? (
-              <p className="text-sm text-[#638885]">Loading interests…</p>
+              <p className="text-sm text-muted">Loading interests…</p>
             ) : profile?.interests && profile.interests.length > 0 ? (
               <div className="flex flex-wrap gap-2">
                 {profile.interests.map((interest) => (
                   <span
                     key={interest}
-                    className="px-3 py-1 rounded-full bg-[#f0f4f4] text-[#111817] text-xs font-medium"
+                    className="px-3 py-1 rounded-full bg-surface text-foreground text-xs font-medium"
                   >
                     {interest}
                   </span>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-[#638885]">
+              <p className="text-sm text-muted">
                 No interests added yet. You can add some when editing their
                 profile.
               </p>
@@ -187,14 +187,14 @@ export function PersonDetailPage() {
           </section>
 
           {/* Important Dates */}
-          <section className="bg-white rounded-2xl border border-[#e5e7eb] p-5">
-            <h2 className="text-sm font-bold text-[#111817] uppercase tracking-wider mb-3">
+          <section className="bg-white rounded-2xl border border-border p-5">
+            <h2 className="text-sm font-bold text-foreground uppercase tracking-wider mb-3">
               Important Dates
             </h2>
             {eventsLoading ? (
-              <p className="text-sm text-[#638885]">Loading events…</p>
+              <p className="text-sm text-muted">Loading events…</p>
             ) : events.length === 0 ? (
-              <p className="text-sm text-[#638885]">
+              <p className="text-sm text-muted">
                 No important dates yet. Add birthdays or milestones from the
                 calendar step.
               </p>
@@ -203,10 +203,10 @@ export function PersonDetailPage() {
                 {birthdayEvent && (
                   <div className="flex items-center justify-between rounded-xl bg-primary/5 px-4 py-3">
                     <div>
-                      <p className="text-sm font-semibold text-[#111817]">
+                      <p className="text-sm font-semibold text-foreground">
                         Birthday
                       </p>
-                      <p className="text-xs text-[#638885]">
+                      <p className="text-xs text-muted">
                         {formatDate(birthdayEvent.date)}
                       </p>
                     </div>
@@ -220,13 +220,13 @@ export function PersonDetailPage() {
                 {otherEvents.map((event) => (
                   <div
                     key={event.id}
-                    className="flex items-center justify-between rounded-xl border border-[#e5e7eb] px-4 py-3"
+                    className="flex items-center justify-between rounded-xl border border-border px-4 py-3"
                   >
                     <div>
-                      <p className="text-sm font-semibold text-[#111817]">
+                      <p className="text-sm font-semibold text-foreground">
                         {event.title}
                       </p>
-                      <p className="text-xs text-[#638885]">
+                      <p className="text-xs text-muted">
                         {formatDate(event.date)}
                       </p>
                     </div>
@@ -243,18 +243,18 @@ export function PersonDetailPage() {
         </div>
 
         {/* Right column: Notes */}
-        <section className="bg-white rounded-2xl border border-[#e5e7eb] p-5 flex flex-col min-h-[260px]">
+        <section className="bg-white rounded-2xl border border-border p-5 flex flex-col min-h-[260px]">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
+            <h2 className="text-sm font-bold text-foreground uppercase tracking-wider">
               Personal Notes &amp; Musings
             </h2>
           </div>
           {person.notes ? (
-            <p className="text-sm text-[#111817] leading-relaxed whitespace-pre-line">
+            <p className="text-sm text-foreground leading-relaxed whitespace-pre-line">
               {person.notes}
             </p>
           ) : (
-            <p className="text-sm text-[#638885]">
+            <p className="text-sm text-muted">
               You haven&apos;t added any notes for {person.name} yet. Use this
               space to capture preferences, sizes, or ideas you don&apos;t want
               to forget.
@@ -264,14 +264,14 @@ export function PersonDetailPage() {
       </div>
 
       {/* Bottom: social links */}
-      <section className="bg-white rounded-2xl border border-[#e5e7eb] p-4 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-xs text-[#638885]">
+      <section className="bg-white rounded-2xl border border-border p-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs text-muted">
           CONNECT:
         </p>
         {socialLoading ? (
-          <p className="text-xs text-[#638885]">Loading social accounts…</p>
+          <p className="text-xs text-muted">Loading social accounts…</p>
         ) : primaryAccounts.length === 0 ? (
-          <p className="text-xs text-[#638885]">
+          <p className="text-xs text-muted">
             No social accounts added yet.
           </p>
         ) : (
@@ -282,7 +282,7 @@ export function PersonDetailPage() {
                 href={account.profileUrl || '#'}
                 target={account.profileUrl ? '_blank' : undefined}
                 rel={account.profileUrl ? 'noreferrer' : undefined}
-                className="px-4 py-1.5 rounded-full border border-[#e5e7eb] text-xs font-semibold text-[#111817] hover:bg-[#f0f4f4] transition-colors"
+                className="px-4 py-1.5 rounded-full border border-border text-xs font-semibold text-foreground hover:bg-surface transition-colors"
               >
                 {account.platform}
               </a>

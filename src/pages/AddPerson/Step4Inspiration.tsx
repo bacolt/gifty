@@ -109,14 +109,12 @@ export function Step4Inspiration() {
   };
 
   return (
-    <FlowLayout stepNumber={4} stepTitle="New Connection">
-      <h1 className="text-3xl font-bold text-[#111817] mb-2">
-        A little extra <span className="text-primary">inspiration.</span>
-      </h1>
-      <p className="text-[#638885] text-lg mb-6">
-        Optional: Paste a social link to help us understand their style.
-      </p>
-      <div className="space-y-6 mt-8">
+    <FlowLayout stepNumber={4} stepTitle="Social Platforms" pageHeading={
+      <>
+      A little extra <span className="text-primary italic">inspiration.</span>
+      </>
+    }>
+      <div className="space-y-6">
         {mainNetworks.map((platform) => (
           <div key={platform}>
             <SocialInput
@@ -139,20 +137,20 @@ export function Step4Inspiration() {
         {otherAccounts.length > 0 && (
           <div className="space-y-3">
             {otherAccounts.map((account, index) => (
-              <div key={index} className="p-3 bg-[#f8fafa] rounded-lg">
+              <div key={index} className="p-3 bg-surface-muted rounded-lg">
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-sm font-semibold text-[#111817]">
+                    <span className="text-sm font-semibold text-foreground">
                       {account.platform}
                     </span>
-                    <span className="text-sm text-[#638885] ml-2">
+                    <span className="text-sm text-muted ml-2">
                       {account.profileUrl}
                     </span>
                   </div>
                   <button
                     type="button"
                     onClick={() => handleRemoveAccount(account.platform)}
-                    className="text-[#638885] hover:text-red-600"
+                    className="text-muted hover:text-red-600"
                   >
                     <Icon name="trash" />
                   </button>
@@ -161,7 +159,7 @@ export function Step4Inspiration() {
             ))}
           </div>
         )}
-        <div className="border-2 border-dashed border-[#dce5e4] rounded-xl p-4">
+        <div className="border-2 border-dashed border-border-muted rounded-xl p-4">
           <div className="grid grid-cols-2 gap-3 mb-3">
             <Select
               placeholder="Select platform"
@@ -186,8 +184,8 @@ export function Step4Inspiration() {
             Add another
           </Button>
         </div>
-        <div className="flex items-start gap-2 text-sm text-[#638885] mt-4">
-          <Icon name="question-circle" className="text-lg" />
+        <div className="flex items-center justify-center gap-2 text-sm text-muted mt-4 text-center">
+          <Icon name="stars" className="text-lg" />
           <p>
             This helps our assistant analyze their interests and aesthetic for
             more tailored gift suggestions.
@@ -200,7 +198,7 @@ export function Step4Inspiration() {
         onContinue={handleFinish}
         onSkip={handleFinish}
         continueLabel="Finish Profile"
-        canSkip={true}
+        canSkip={false}
         isLoading={isSubmitting}
       />
     </FlowLayout>

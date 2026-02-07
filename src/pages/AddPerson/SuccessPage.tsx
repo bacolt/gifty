@@ -39,10 +39,10 @@ export function SuccessPage() {
               <Icon name="check-circle" className="text-5xl text-primary animate-checkmark" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold text-[#111817] mb-4 text-center">
+          <h1 className="text-4xl font-bold text-foreground mb-4 text-center">
             Profile Created Successfully!
           </h1>
-          <p className="text-[#638885] text-lg mb-8 text-center max-w-md">
+          <p className="text-muted text-lg mb-8 text-center max-w-md">
             Your new connection has been added. We'll help you plan thoughtful
             gifts for them.
           </p>

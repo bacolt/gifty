@@ -21,41 +21,42 @@ export function StepNavigation({
   isLoading = false,
 }: StepNavigationProps) {
   return (
-    <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#e5e7eb]">
-      <div className="flex-1">
-        {stepNumber > 1 && onBack && (
-          <button
-            type="button"
-            onClick={onBack}
-            className="text-[#111817] hover:text-primary transition-colors flex items-center gap-1"
-          >
-            <Icon name="arrow-left" className="text-sm" />
-            BACK
-          </button>
-        )}
-      </div>
-      <div className="flex-1 flex justify-center">
-        <Button
-          variant="primary"
-          onClick={onContinue}
-          disabled={isLoading}
-          fullWidth
-          icon="arrow-right"
-          iconPosition="right"
-        >
-          {continueLabel}
-        </Button>
-      </div>
-      <div className="flex-1 flex justify-end">
-        {canSkip && onSkip && (
-          <button
-            type="button"
-            onClick={onSkip}
-            className="text-[#111817] hover:text-primary transition-colors"
-          >
-            {stepNumber === 3 ? 'SKIP FOR NOW' : 'SKIP THIS STEP'}
-          </button>
-        )}
+    <div className="mt-8 pt-6 space-y-4">
+      <Button
+        variant="primary"
+        onClick={onContinue}
+        disabled={isLoading}
+        fullWidth
+        icon="arrow-right"
+        iconPosition="right"
+        className="py-3 rounded-[10px]"
+      >
+        {continueLabel}
+      </Button>
+      <div className="flex items-center justify-between">
+        <div className="flex-1">
+          {stepNumber > 1 && onBack && (
+            <button
+              type="button"
+              onClick={onBack}
+              className="text-xs text-muted hover:text-foreground transition-colors flex items-center gap-1"
+            >
+              <Icon name="arrow-left" className="text-[10px]" />
+              Back
+            </button>
+          )}
+        </div>
+        <div className="flex-1 flex justify-end">
+          {canSkip && onSkip && (
+            <button
+              type="button"
+              onClick={onSkip}
+              className="text-xs text-muted hover:text-foreground transition-colors"
+            >
+              {stepNumber === 3 ? 'Skip for now' : 'Skip this step'}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

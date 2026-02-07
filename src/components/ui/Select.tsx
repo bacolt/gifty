@@ -62,16 +62,16 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       setOpen(false);
     };
 
-    const triggerClasses = `w-full px-4 py-3 pr-10 rounded-[10px] border text-left flex items-center justify-between gap-2 ${
+    const triggerClasses = `w-full px-4 py-3 pr-6 rounded-[10px] border text-left flex items-center justify-between gap-2 ${
       error
         ? 'border-red-300 bg-red-50'
-        : 'border-[#e5e7eb] bg-[#f0f4f4] focus:border-primary'
-    } focus:outline-none focus:ring-2 focus:ring-primary/20 text-[#111817] cursor-pointer transition-colors ${className}`;
+        : 'border-border bg-surface focus:border-primary'
+    } focus:outline-none focus:ring-2 focus:ring-primary/20 text-foreground cursor-pointer transition-colors ${className}`;
 
     return (
       <div className="w-full" ref={containerRef} id={id}>
         {label && (
-          <label className="block text-xs font-bold text-[#638885] uppercase tracking-wider mb-2">
+          <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
             {label}
           </label>
         )}
@@ -92,20 +92,20 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
             <span
               className={
                 displayLabel
-                  ? 'text-[#111817] truncate'
-                  : 'text-[#638885] truncate'
+                  ? 'text-foreground truncate'
+                  : 'text-muted truncate'
               }
             >
               {displayLabel ?? placeholder ?? ''}
             </span>
             <Icon
               name="chevron-down"
-              className={`text-xl text-[#638885] flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}
+              className={`text-xl text-muted flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}
             />
           </button>
           {open && (
             <ul
-              className="absolute z-50 w-full mt-1 py-1 bg-white border border-[#e5e7eb] rounded-[10px] shadow-lg max-h-60 overflow-auto [&>li:first-child]:rounded-t-[9px] [&>li:last-child]:rounded-b-[9px]"
+              className="absolute z-50 w-full mt-1 py-1 bg-white border border-border rounded-[10px] shadow-lg max-h-60 overflow-auto [&>li:first-child]:rounded-t-[9px] [&>li:last-child]:rounded-b-[9px]"
               role="listbox"
             >
               {placeholder && (
@@ -113,7 +113,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
                   role="option"
                   aria-selected={!value}
                   onClick={() => triggerChange('')}
-                  className="px-4 py-2.5 text-[#638885] hover:bg-[#f0f4f4] cursor-pointer transition-colors"
+                  className="px-4 py-2.5 text-muted text-sm hover:bg-surface cursor-pointer transition-colors"
                 >
                   {placeholder}
                 </li>
@@ -124,7 +124,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
                   role="option"
                   aria-selected={value === opt.value}
                   onClick={() => triggerChange(opt.value)}
-                  className={`px-4 py-2.5 text-[#111817] hover:bg-[#f0f4f4] cursor-pointer transition-colors ${
+                  className={`px-4 py-2.5 text-foreground hover:bg-surface cursor-pointer transition-colors ${
                     value === opt.value
                       ? 'bg-primary/10 text-primary font-medium'
                       : ''

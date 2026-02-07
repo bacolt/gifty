@@ -38,13 +38,14 @@ export function Step2Interests() {
   };
 
   return (
-    <FlowLayout stepNumber={2} stepTitle="Interests & Hobbies">
-      <h1 className="text-3xl font-bold text-[#111817] mb-2">
-        What makes them <span className="text-primary">smile?</span>
-      </h1>
-      <div className="space-y-6 mt-8">
+    <FlowLayout stepNumber={2} stepTitle="Interests & Hobbies" pageHeading={
+      <>
+      What makes them <span className="text-primary italic">smile?</span>
+      </>
+    }>
+      <div className="space-y-6">
         <div>
-          <label className="block text-xs font-bold text-[#638885] uppercase tracking-wider mb-2">
+          <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
             ADD AN INTEREST
           </label>
           <div className="relative">
@@ -55,7 +56,7 @@ export function Step2Interests() {
               placeholder="Search or type a hobby..."
               className="pl-12"
             />
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#638885]">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted">
               <Icon name="search" />
             </span>
           </div>
@@ -64,7 +65,7 @@ export function Step2Interests() {
               {formData.interests.map((interest) => (
                 <Chip
                   key={interest}
-                  label={interest}
+                  label={interest.charAt(0).toUpperCase() + interest.slice(1)}
                   onDelete={() => handleRemoveInterest(interest)}
                 />
               ))}
@@ -72,7 +73,7 @@ export function Step2Interests() {
           )}
         </div>
         <div>
-          <label className="block text-xs font-bold text-[#638885] uppercase tracking-wider mb-3">
+          <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-3">
             POPULAR SUGGESTIONS
           </label>
           <div className="flex flex-wrap gap-2">
@@ -85,8 +86,8 @@ export function Step2Interests() {
               />
             ))}
           </div>
-          <div className="flex items-start gap-2 text-sm text-[#638885] mt-4">
-            <Icon name="flower1" className="text-lg" />
+          <div className="flex items-center justify-center gap-2 text-sm text-muted mt-4 text-center">
+            <Icon name="stars" className="text-lg" />
             <p>The more you add, the better our suggestions.</p>
           </div>
         </div>
@@ -95,7 +96,7 @@ export function Step2Interests() {
         stepNumber={2}
         onBack={() => navigate('/add-person/step-1')}
         onContinue={() => navigate('/add-person/step-3')}
-        continueLabel="Continue to Step 3"
+        continueLabel="Continue"
         canSkip={false}
       />
     </FlowLayout>

@@ -21,10 +21,10 @@ export function Step1MainData() {
   return (
     <FlowLayout stepNumber={1} stepTitle="Basic Information" pageHeading={
       <>
-      Who are we <br/> <span className="text-primary italic">celebrating?</span>
+      Who are we <span className="text-primary italic">celebrating?</span>
       </>
     }>
-      <div className="space-y-6 mt-8">
+      <div className="space-y-6">
         <Input
           label="FULL NAME"
           placeholder="e.g. Sarah Jenkins"
@@ -38,7 +38,7 @@ export function Step1MainData() {
           value={formData.relationship}
           onChange={(e) => updateFormData({ relationship: e.target.value })}
         />
-        <div className="flex items-center justify-center gap-2 text-sm text-[#638885] mt-4 text-center">
+        <div className="flex items-center justify-center gap-2 text-sm text-muted mt-4 text-center">
           <Icon name="check-circle" className="text-sm" />
           <p>You can always tweak these details later.</p>
         </div>
@@ -46,7 +46,7 @@ export function Step1MainData() {
       <StepNavigation
         stepNumber={1}
         onContinue={handleContinue}
-        continueLabel="Continue to Step 2"
+        continueLabel="Continue"
         canSkip={false}
       />
     </FlowLayout>

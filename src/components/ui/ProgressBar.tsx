@@ -18,13 +18,13 @@ export function ProgressBar({
       {showFlowLabel}
       <div className="flex items-center justify-between mb-2">
         {stepTitle && (
-          <h2 className="text-sm font-bold text-[#111817]">{stepTitle}</h2>
+          <h2 className="text-sm font-bold text-foreground">{stepTitle}</h2>
         )}
-        <span className="text-sm text-[#638885]">
+        <span className="text-sm text-muted">
           Step {currentStep} of {totalSteps}
         </span>
       </div>
-      <div className="w-full h-2 bg-[#f0f4f4] rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-surface rounded-full overflow-hidden">
         <div
           className="h-full bg-primary transition-all duration-300 ease-out"
           style={{ width: `${progress}%` }}

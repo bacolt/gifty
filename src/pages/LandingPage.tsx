@@ -30,14 +30,14 @@ export function LandingPage() {
           <div className="h-9 w-9 rounded-xl bg-primary flex items-center justify-center text-white shadow-md">
             <Icon name="gift" className="text-[20px]" />
           </div>
-          <span className="text-[#111817] font-bold text-lg tracking-tight">
+          <span className="text-foreground font-bold text-lg tracking-tight">
             GiftPlanner
           </span>
         </div>
         <div className="flex items-center gap-4">
           <Link
             to="/login"
-            className="text-sm font-semibold text-[#111817] hover:text-primary transition-colors"
+            className="text-sm font-semibold text-foreground hover:text-primary transition-colors"
           >
             Sign in
           </Link>
@@ -55,12 +55,12 @@ export function LandingPage() {
         <section className="flex-1 flex items-center justify-center">
           <div className="max-w-[1120px] w-full mx-auto px-6 py-12 text-center flex flex-col md:flex-row md:items-center md:justify-center gap-10">
             <div className="max-w-xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#111817] leading-tight mb-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight mb-4">
                 Give with{' '}
                 <span className="text-primary italic">intention</span>,<br />
                 not effort.
               </h1>
-              <p className="text-base md:text-lg text-[#638885] mb-8 max-w-md mx-auto">
+              <p className="text-base md:text-lg text-muted mb-8 max-w-md mx-auto">
                 A personal assistant for your most thoughtful moments. Tailored
                 planning for people who care.
               </p>
@@ -74,7 +74,7 @@ export function LandingPage() {
                 </Link>
                 <a
                   href="#how-it-works"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white border border-[#e5e7eb] text-sm font-semibold text-[#111817] hover:bg-[#f0f4f4] transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white border border-border text-sm font-semibold text-foreground hover:bg-surface transition-colors"
                 >
                   How it works
                 </a>
@@ -86,17 +86,17 @@ export function LandingPage() {
         {/* How it works / features */}
         <section
           id="how-it-works"
-          className="border-t border-[#e5e7eb] bg-white/60"
+          className="border-t border-border bg-white/60"
         >
           <div className="max-w-[1120px] w-full mx-auto px-6 py-10 grid gap-10 md:grid-cols-3 text-center md:text-left">
             <div className="space-y-3">
               <div className="inline-flex h-10 w-10 rounded-full bg-primary/10 items-center justify-center text-primary mb-1">
                 <Icon name="stars" className="text-[20px]" />
               </div>
-              <h3 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
                 Curated Choices
               </h3>
-              <p className="text-sm text-[#638885]">
+              <p className="text-sm text-muted">
                 Bespoke selections based on unique personality profiles and
                 values.
               </p>
@@ -105,10 +105,10 @@ export function LandingPage() {
               <div className="inline-flex h-10 w-10 rounded-full bg-primary/10 items-center justify-center text-primary mb-1">
                 <Icon name="calendar-event" className="text-[20px]" />
               </div>
-              <h3 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
                 Effortless Timing
               </h3>
-              <p className="text-sm text-[#638885]">
+              <p className="text-sm text-muted">
                 Never miss a milestone with intelligent scheduling and
                 reminders.
               </p>
@@ -117,10 +117,10 @@ export function LandingPage() {
               <div className="inline-flex h-10 w-10 rounded-full bg-primary/10 items-center justify-center text-primary mb-1">
                 <Icon name="heart" className="text-[20px]" />
               </div>
-              <h3 className="text-sm font-bold text-[#111817] uppercase tracking-wider">
+              <h3 className="text-sm font-bold text-foreground uppercase tracking-wider">
                 Emotional Connection
               </h3>
-              <p className="text-sm text-[#638885]">
+              <p className="text-sm text-muted">
                 Focus on the joy of giving, while we handle the logistics of
                 finding.
               </p>
@@ -130,19 +130,19 @@ export function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-[#e5e7eb] py-6">
-        <div className="max-w-[1120px] w-full mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#638885]">
+      <footer className="w-full border-t border-border py-6">
+        <div className="max-w-[1120px] w-full mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted">
           <p>© 2026 GiftyPlanner — Handcrafted for meaningful giving.</p>
           <div className="flex gap-6">
             <Link
               to="/privacy"
-              className="hover:text-[#111817] transition-colors uppercase tracking-wide"
+              className="hover:text-foreground transition-colors uppercase tracking-wide"
             >
               Privacy
             </Link>
             <Link
               to="/terms"
-              className="hover:text-[#111817] transition-colors uppercase tracking-wide"
+              className="hover:text-foreground transition-colors uppercase tracking-wide"
             >
               Terms
             </Link>
@@ -150,7 +150,7 @@ export function LandingPage() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-[#111817] transition-colors uppercase tracking-wide"
+              className="hover:text-foreground transition-colors uppercase tracking-wide"
             >
               Instagram
             </a>

@@ -10,10 +10,10 @@ interface SocialInputProps {
 }
 
 const networkIcons: Record<string, string> = {
-  instagram: 'camera',
-  tiktok: 'camera-video',
-  linkedin: 'briefcase',
-  facebook: 'person',
+  instagram: 'instagram',
+  tiktok: 'tiktok',
+  linkedin: 'linkedin',
+  facebook: 'facebook',
 };
 
 const networkLabels: Record<string, string> = {
@@ -35,11 +35,11 @@ export function SocialInput({
 
   return (
     <div className="w-full">
-      <label className="block text-xs font-bold text-[#638885] uppercase tracking-wider mb-2">
+      <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
         {label}
       </label>
       <div className="relative">
-        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#638885] pointer-events-none">
+        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted pointer-events-none">
           <Icon name={icon} className="text-xl" />
         </span>
         <Input

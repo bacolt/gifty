@@ -47,10 +47,10 @@ export function SignupPage() {
     <div className="min-h-screen bg-background-light flex flex-col">
       {/* Header */}
       <header className="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-        <div className="text-2xl font-bold text-[#111817]">Gifty</div>
+        <div className="text-2xl font-bold text-foreground">Gifty</div>
         <Link
           to="/help"
-          className="text-[#638885] hover:text-[#111817] transition-colors text-sm font-medium"
+          className="text-muted hover:text-foreground transition-colors text-sm font-medium"
         >
           Help
         </Link>
@@ -59,10 +59,10 @@ export function SignupPage() {
       {/* Main content */}
       <div className="flex-1 flex items-center justify-center p-6">
         <div className="w-full max-w-md">
-          <h1 className="text-4xl font-bold text-[#111817] mb-2">
+          <h1 className="text-4xl font-bold text-foreground mb-2">
             Create your account
           </h1>
-          <p className="text-lg text-[#638885] mb-8">
+          <p className="text-lg text-muted mb-8">
             Start planning thoughtful gifts today.
           </p>
 
@@ -100,7 +100,7 @@ export function SignupPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#638885] hover:text-[#111817] transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-foreground transition-colors"
               >
 <Icon
                 name={showPassword ? 'eye-slash' : 'eye'}
@@ -127,7 +127,7 @@ export function SignupPage() {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#638885] hover:text-[#111817] transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-foreground transition-colors"
               >
 <Icon
                 name={showConfirmPassword ? 'eye-slash' : 'eye'}
@@ -154,11 +154,11 @@ export function SignupPage() {
 
           {/* Divider */}
           <div className="flex items-center gap-4 my-6">
-            <div className="flex-1 h-px bg-[#e5e7eb]" />
-            <span className="text-xs font-bold text-[#638885] uppercase tracking-wider">
+            <div className="flex-1 h-px bg-border" />
+            <span className="text-xs font-bold text-muted uppercase tracking-wider">
               OR CONTINUE WITH
             </span>
-            <div className="flex-1 h-px bg-[#e5e7eb]" />
+            <div className="flex-1 h-px bg-border" />
           </div>
 
           {/* Social login buttons (disabled for now) */}
@@ -166,7 +166,7 @@ export function SignupPage() {
             <button
               type="button"
               disabled
-              className="flex items-center justify-center gap-2 px-4 py-3 border border-[#e5e7eb] rounded-lg bg-white text-[#111817] font-medium hover:bg-[#f0f4f4] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center justify-center gap-2 px-4 py-3 border border-border rounded-lg bg-white text-foreground font-medium hover:bg-surface transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="text-xl">G</span>
               Google
@@ -174,7 +174,7 @@ export function SignupPage() {
             <button
               type="button"
               disabled
-              className="flex items-center justify-center gap-2 px-4 py-3 border border-[#e5e7eb] rounded-lg bg-white text-[#111817] font-medium hover:bg-[#f0f4f4] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center justify-center gap-2 px-4 py-3 border border-border rounded-lg bg-white text-foreground font-medium hover:bg-surface transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <span className="text-xl">🍎</span>
               Apple
@@ -182,7 +182,7 @@ export function SignupPage() {
           </div>
 
           {/* Sign in link */}
-          <p className="text-center text-[#638885] text-sm">
+          <p className="text-center text-muted text-sm">
             Already have an account?{' '}
             <Link to="/login" className="text-primary font-bold hover:opacity-80">
               Sign in
@@ -192,14 +192,14 @@ export function SignupPage() {
       </div>
 
       {/* Footer */}
-      <footer className="w-full max-w-7xl mx-auto px-6 py-6 border-t border-[#e5e7eb] flex flex-wrap justify-center gap-6 text-xs text-[#638885]">
-        <Link to="/privacy" className="hover:text-[#111817] transition-colors">
+      <footer className="w-full max-w-7xl mx-auto px-6 py-6 border-t border-border flex flex-wrap justify-center gap-6 text-xs text-muted">
+        <Link to="/privacy" className="hover:text-foreground transition-colors">
           Privacy Policy
         </Link>
-        <Link to="/terms" className="hover:text-[#111817] transition-colors">
+        <Link to="/terms" className="hover:text-foreground transition-colors">
           Terms
         </Link>
-        <Link to="/support" className="hover:text-[#111817] transition-colors">
+        <Link to="/support" className="hover:text-foreground transition-colors">
           Contact Support
         </Link>
       </footer>
