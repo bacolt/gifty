@@ -5,7 +5,7 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-background-light">
       <DashboardHeader />
-      <main className="flex-1 max-w-[1280px] mx-auto w-full px-6 py-10 lg:px-10">
+      <main className="flex-1 max-w-[1280px] mx-auto w-full px-6 py-10 lg:px-10 border-t-0">
         <Outlet />
       </main>
     </div>

@@ -129,7 +129,7 @@ export function CalendarPage() {
     return withSortDate
       .filter(({ sortDate }) => sortDate >= todayStr)
       .sort((a, b) => a.sortDate.localeCompare(b.sortDate))
-      .slice(0, 10)
+      .slice(0, 3)
       .map(({ event, sortDate }) => ({ event, displayDate: sortDate }));
   }, [events, today]);
 
@@ -164,9 +164,9 @@ export function CalendarPage() {
   );
 
   return (
-    <div className="flex gap-8 w-full max-w-[1400px] mx-auto">
-      {/* Left sidebar: Quick Look only */}
-      <aside className="hidden lg:block w-72 flex-shrink-0">
+    <div className="flex w-full min-w-0 min-h-full lg:ml-[calc(-50vw+50%)] lg:mr-[calc(-50vw+50%)] lg:w-screen lg:pl-72">
+      {/* Left sidebar: Quick Look fixed to viewport left */}
+      <aside className="hidden lg:block fixed left-0 top-16 w-72 h-[calc(100vh-4rem)] overflow-y-auto border-r border-border bg-background-light z-10 pl-6 pr-4 pt-6">
         <section>
           <h3 className="text-foreground font-bold text-lg mb-1">Quick Look</h3>
           <p className="text-muted text-sm mb-4">Upcoming events</p>
@@ -174,7 +174,7 @@ export function CalendarPage() {
             {upcomingEvents.length === 0 ? (
               <p className="text-muted text-sm">No upcoming events.</p>
             ) : (
-              upcomingEvents.map(({ event, displayDate }) => {
+              upcomingEvents.slice(0, 3).map(({ event, displayDate }) => {
                 const inDays = daysUntil(displayDate);
                 const daysLabel =
                   inDays === 0
@@ -259,10 +259,10 @@ export function CalendarPage() {
         </section>
       </aside>
 
-      {/* Main: header row (month + view switcher) then calendar */}
-      <main className="flex-1 min-w-0 flex flex-col gap-4">
-        {/* Month + view switcher side by side */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+      {/* Main: calendar fills available space beside fixed sidebar */}
+      <main className="flex-1 min-w-0 flex flex-col gap-4 min-h-0 px-8">
+        {/* Month + view switcher side by side (no border below) */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-4 w-full border-0 border-b-0 flex-shrink-0">
           <div className="flex items-center gap-3">
             <h2 className="text-foreground text-2xl font-bold tracking-tight">
               {monthName}
@@ -325,14 +325,14 @@ export function CalendarPage() {
           </div>
         </div>
 
-        {/* Calendar card: grid only */}
-        <div className="p-6">
+        {/* Calendar: fills available space, responsive */}
+        <div className="flex-1 min-h-0 min-w-0 w-full p-4 sm:p-6 border-0 flex flex-col overflow-hidden">
           {/* Month layout: flex (no grid), 7 columns via flex-basis */}
-          <div className="flex flex-wrap rounded-lg overflow-hidden">
+          <div className="flex flex-wrap flex-1 min-h-[50vh] sm:min-h-[55vh] lg:min-h-[60vh] rounded-lg overflow-hidden border-0 min-w-0">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((wd) => (
               <div
                 key={wd}
-                className="w-[14.285%] min-w-0 flex-shrink-0 py-2 text-center text-xs font-semibold text-muted uppercase"
+                className="w-[14.285%] min-w-0 flex-shrink py-2 text-center text-xs font-semibold text-muted uppercase border-0"
               >
                 {wd}
               </div>
@@ -342,7 +342,7 @@ export function CalendarPage() {
                 return (
                   <div
                     key={`empty-${i}`}
-                    className="w-[14.285%] min-w-0 flex-shrink-0 min-h-[100px]"
+                    className="w-[14.285%] min-w-0 flex-shrink min-h-[90px] sm:min-h-[110px] lg:min-h-[130px] xl:min-h-[150px]"
                   />
                 );
               }
@@ -362,7 +362,7 @@ export function CalendarPage() {
               return (
                 <div
                   key={day}
-                  className={`w-[14.285%] min-w-0 flex-shrink-0 min-h-[100px] flex flex-col p-2 ${
+                  className={`w-[14.285%] min-w-0 flex-shrink min-h-[90px] sm:min-h-[110px] lg:min-h-[130px] xl:min-h-[150px] flex flex-col p-2 ${
                     isToday ? 'border-t-4 border-t-primary' : ''
                   }`}
                 >

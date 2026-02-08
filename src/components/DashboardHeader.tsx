@@ -41,7 +41,7 @@ export function DashboardHeader() {
     .toUpperCase()
     .slice(0, 2) || 'U';
   return (
-    <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-border px-10 py-4 bg-white">
+    <header className="flex items-center justify-between whitespace-nowrap px-10 py-4 bg-white">
       <div className="flex items-center gap-8">
         <Link to="/" className="flex items-center gap-3">
           <div className="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
