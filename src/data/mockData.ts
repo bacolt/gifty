@@ -7,9 +7,9 @@ export const mockPeople: Person[] = [
 ];
 
 export const mockEvents: Event[] = [
-  { id: 'e1', personId: '1', title: "Alice's Birthday", date: '2025-03-15', type: 'birthday' },
-  { id: 'e2', personId: '2', title: "Bob's Birthday", date: '2025-07-22', type: 'birthday' },
-  { id: 'e3', personId: '1', title: 'Anniversary', date: '2025-06-10', type: 'anniversary' },
+  { id: 'e1', personId: '1', title: "Alice's Birthday", date: '2025-03-15', type: 'birthday', giftStatus: 'not_planned' },
+  { id: 'e2', personId: '2', title: "Bob's Birthday", date: '2025-07-22', type: 'birthday', giftStatus: 'not_planned' },
+  { id: 'e3', personId: '1', title: 'Anniversary', date: '2025-06-10', type: 'anniversary', giftStatus: 'not_planned' },
 ];
 
 export const mockProfiles: Profile[] = [

@@ -5,7 +5,6 @@
 import type {
   DatabasePerson,
   DatabaseProfile,
-  DatabaseEvent,
   DatabaseEventRow,
   DatabaseGiftSuggestion,
   DatabaseSocialAccount,
