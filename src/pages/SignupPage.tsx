@@ -38,8 +38,8 @@ export function SignupPage() {
       setError(result.error);
       setIsLoading(false);
     } else {
-      // Success - redirect to dashboard
-      navigate('/', { replace: true });
+      // Success – show confirm-email page (no CTA, no resend)
+      navigate('/confirm-email', { replace: true, state: { email } });
     }
   };
 

@@ -10,6 +10,7 @@ import { LandingPage } from '@/pages/LandingPage';
 import { LoginPage } from '@/pages/LoginPage';
 import { SignupPage } from '@/pages/SignupPage';
 import { AuthCallbackPage } from '@/pages/AuthCallbackPage';
+import { ConfirmEmailPage } from '@/pages/ConfirmEmailPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { CalendarPage } from '@/pages/CalendarPage';
 import { PeoplePage } from '@/pages/PeoplePage';
@@ -50,6 +51,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/auth/callback" element={<AuthCallbackPage />} />
+            <Route path="/confirm-email" element={<ConfirmEmailPage />} />
             
             {/* Protected routes */}
             <Route
