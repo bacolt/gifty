@@ -41,6 +41,9 @@ All user–specific data is scoped by the `user_id` column on the `people` table
   - **`date` (date)**: The calendar date of the event. **Not null**.
   - **`type` (text)**: Event type (e.g. `birthday`, `anniversary`, `name_day`, `other`).
   - **`status` (text)**: Optional status (e.g. `coming_soon`, `gift_ordered`, `completed`).
+  - **`gift_status` (text, default `not_planned`, not null)**: Gift planning state: `not_planned`, `ideas_gathered`, or `purchased`.
+  - **`chosen_suggestion_id` (uuid, nullable, FK → `gift_suggestions.id`)**: The main gift idea chosen for this event (when `gift_status` is `ideas_gathered`).
+  - **`purchased_gift_title` (text, nullable)**: Name of the gift purchased for this event (when `gift_status` is `purchased`).
   - **`created_at` (timestamptz)**: Created timestamp. Default `now()`.
   - **`updated_at` (timestamptz)**: Updated timestamp. Default `now()`.
 

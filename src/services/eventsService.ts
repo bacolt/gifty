@@ -7,23 +7,26 @@ import { createServiceResponse, type ServiceResponse } from './base';
 import { toEvent } from '@/utils/transformers';
 import type { Event } from '@/types';
 import type {
-  DatabaseEvent,
+  DatabaseEventRow,
   InsertEvent,
   UpdateEvent,
 } from '@/types/database';
 
+/** Select all event columns. Join for chosen suggestion title can be added when FK relation is confirmed. */
+const EVENTS_SELECT = '*';
+
 export async function getAllEvents(): Promise<ServiceResponse<Event[]>> {
   const { data, error } = await supabase
     .from('events')
-    .select('*')
+    .select(EVENTS_SELECT)
     .order('date', { ascending: true });
 
   if (error) {
     return createServiceResponse<Event[]>(null, error);
   }
 
-  const events = (data || []).map((dbEvent: DatabaseEvent) =>
-    toEvent(dbEvent)
+  const events = (data || []).map((row) =>
+    toEvent(row as DatabaseEventRow)
   );
   return createServiceResponse(events, null);
 }
@@ -33,7 +36,7 @@ export async function getEventsByPersonId(
 ): Promise<ServiceResponse<Event[]>> {
   const { data, error } = await supabase
     .from('events')
-    .select('*')
+    .select(EVENTS_SELECT)
     .eq('person_id', personId)
     .order('date', { ascending: true });
 
@@ -41,8 +44,8 @@ export async function getEventsByPersonId(
     return createServiceResponse<Event[]>(null, error);
   }
 
-  const events = (data || []).map((dbEvent: DatabaseEvent) =>
-    toEvent(dbEvent)
+  const events = (data || []).map((row) =>
+    toEvent(row as DatabaseEventRow)
   );
   return createServiceResponse(events, null);
 }
@@ -53,7 +56,7 @@ export async function getUpcomingEvents(
   const today = new Date().toISOString().split('T')[0];
   let query = supabase
     .from('events')
-    .select('*')
+    .select(EVENTS_SELECT)
     .gte('date', today)
     .order('date', { ascending: true });
 
@@ -67,8 +70,8 @@ export async function getUpcomingEvents(
     return createServiceResponse<Event[]>(null, error);
   }
 
-  const events = (data || []).map((dbEvent: DatabaseEvent) =>
-    toEvent(dbEvent)
+  const events = (data || []).map((row) =>
+    toEvent(row as DatabaseEventRow)
   );
   return createServiceResponse(events, null);
 }
@@ -86,7 +89,7 @@ export async function createEvent(
     return createServiceResponse<Event>(null, error);
   }
 
-  return createServiceResponse(toEvent(data as DatabaseEvent), null);
+  return createServiceResponse(toEvent(data as DatabaseEventRow), null);
 }
 
 export async function updateEvent(
@@ -104,7 +107,7 @@ export async function updateEvent(
     return createServiceResponse<Event>(null, error);
   }
 
-  return createServiceResponse(toEvent(data as DatabaseEvent), null);
+  return createServiceResponse(toEvent(data as DatabaseEventRow), null);
 }
 
 export async function deleteEvent(id: string): Promise<ServiceResponse<void>> {

@@ -8,6 +8,8 @@ export interface Person {
   profileId?: string;
 }
 
+export type GiftStatus = 'not_planned' | 'ideas_gathered' | 'purchased';
+
 export interface Event {
   id: string;
   personId: string;
@@ -15,6 +17,11 @@ export interface Event {
   date: string;
   type: 'birthday' | 'anniversary' | 'name_day' | 'other';
   status?: string;
+  giftStatus: GiftStatus;
+  chosenSuggestionId?: string | null;
+  purchasedGiftTitle?: string | null;
+  /** Populated when event is fetched with chosen suggestion joined. */
+  chosenSuggestionTitle?: string | null;
 }
 
 export interface SocialAccount {

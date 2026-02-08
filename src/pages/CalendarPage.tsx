@@ -79,29 +79,6 @@ function eventTitleWithYears(
   return event.title;
 }
 
-/** Mock: gift status per event (will connect to DB later). */
-type GiftStatus = 'not_planned' | 'ideas_gathered' | 'purchased';
-const MOCK_GIFT_STATUS: Record<string, GiftStatus> = {};
-const MOCK_SUGGESTION: Record<string, string> = {};
-const MOCK_PURCHASED_GIFT: Record<string, string> = {};
-
-function getMockCardData(eventId: string): {
-  status: GiftStatus;
-  suggestion: string;
-  purchasedGift: string;
-} {
-  const status =
-    MOCK_GIFT_STATUS[eventId] ??
-    (['not_planned', 'ideas_gathered', 'purchased'] as const)[
-      eventId.length % 3
-    ];
-  return {
-    status,
-    suggestion: MOCK_SUGGESTION[eventId] ?? 'Silk Scarf',
-    purchasedGift: MOCK_PURCHASED_GIFT[eventId] ?? 'Fine Dining Voucher',
-  };
-}
-
 export function CalendarPage() {
   const { events, people } = useApp();
   const today = new Date();
@@ -210,14 +187,15 @@ export function CalendarPage() {
                   displayDate,
                   getPersonName
                 );
-                const { status, suggestion, purchasedGift } =
-                  getMockCardData(event.id);
+                const status = event.giftStatus ?? 'not_planned';
                 const statusLabel =
                   status === 'not_planned'
                     ? 'Not planned'
                     : status === 'ideas_gathered'
                       ? 'Ideas Gathered'
                       : 'Purchased';
+                const suggestionTitle = event.chosenSuggestionTitle ?? '';
+                const purchasedGiftTitle = event.purchasedGiftTitle ?? '';
                 return (
                   <div
                     key={event.id}
@@ -258,18 +236,18 @@ export function CalendarPage() {
                           className="text-primary text-sm shrink-0"
                         />
                         <span className="text-muted text-xs">
-                          Idea: {suggestion}
+                          Idea: {suggestionTitle || '—'}
                         </span>
                       </div>
                     )}
-                    {status === 'purchased' && (
+                    {status === 'purchased' && purchasedGiftTitle && (
                       <div className="mt-3 flex items-center gap-2">
                         <Icon
                           name="check-circle-fill"
                           className="text-green-600 text-base shrink-0"
                         />
                         <span className="text-foreground text-xs font-medium">
-                          {purchasedGift}
+                          {purchasedGiftTitle}
                         </span>
                       </div>
                     )}

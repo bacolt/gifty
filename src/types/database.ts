@@ -24,6 +24,8 @@ export interface DatabaseProfile {
   updated_at: string;
 }
 
+export type GiftStatusDb = 'not_planned' | 'ideas_gathered' | 'purchased';
+
 export interface DatabaseEvent {
   id: string;
   person_id: string;
@@ -31,8 +33,16 @@ export interface DatabaseEvent {
   date: string;
   type: 'birthday' | 'anniversary' | 'name_day' | 'other';
   status?: string | null;
+  gift_status: GiftStatusDb;
+  chosen_suggestion_id: string | null;
+  purchased_gift_title: string | null;
   created_at: string;
   updated_at: string;
+}
+
+/** Event row when selected with joined gift_suggestions (for chosen suggestion title). */
+export interface DatabaseEventRow extends DatabaseEvent {
+  gift_suggestions?: { title: string } | null;
 }
 
 export interface DatabaseGiftSuggestion {
@@ -63,8 +73,13 @@ export type InsertProfile = Omit<
 
 export type InsertEvent = Omit<
   DatabaseEvent,
-  'id' | 'created_at' | 'updated_at'
->;
+  'id' | 'created_at' | 'updated_at' | 'gift_status' | 'chosen_suggestion_id' | 'purchased_gift_title'
+> & {
+  /** Optional on insert; DB default is 'not_planned'. */
+  gift_status?: GiftStatusDb;
+  chosen_suggestion_id?: string | null;
+  purchased_gift_title?: string | null;
+};
 
 export type InsertGiftSuggestion = Omit<
   DatabaseGiftSuggestion,

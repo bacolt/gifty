@@ -6,6 +6,7 @@ import type {
   DatabasePerson,
   DatabaseProfile,
   DatabaseEvent,
+  DatabaseEventRow,
   DatabaseGiftSuggestion,
   DatabaseSocialAccount,
   InsertPerson,
@@ -44,7 +45,7 @@ export function toProfile(dbProfile: DatabaseProfile): Profile {
   };
 }
 
-export function toEvent(dbEvent: DatabaseEvent): Event {
+export function toEvent(dbEvent: DatabaseEventRow): Event {
   return {
     id: dbEvent.id,
     personId: dbEvent.person_id,
@@ -52,6 +53,10 @@ export function toEvent(dbEvent: DatabaseEvent): Event {
     date: dbEvent.date,
     type: dbEvent.type,
     status: dbEvent.status ?? undefined,
+    giftStatus: dbEvent.gift_status ?? 'not_planned',
+    chosenSuggestionId: dbEvent.chosen_suggestion_id ?? undefined,
+    purchasedGiftTitle: dbEvent.purchased_gift_title ?? undefined,
+    chosenSuggestionTitle: dbEvent.gift_suggestions?.title ?? undefined,
   };
 }
 
@@ -104,6 +109,11 @@ export function fromEvent(event: Partial<Event>): Partial<InsertEvent> {
   if (event.date !== undefined) result.date = event.date;
   if (event.type !== undefined) result.type = event.type;
   if (event.status !== undefined) result.status = event.status ?? null;
+  if (event.giftStatus !== undefined) result.gift_status = event.giftStatus;
+  if (event.chosenSuggestionId !== undefined)
+    result.chosen_suggestion_id = event.chosenSuggestionId ?? null;
+  if (event.purchasedGiftTitle !== undefined)
+    result.purchased_gift_title = event.purchasedGiftTitle ?? null;
   return result;
 }
 
