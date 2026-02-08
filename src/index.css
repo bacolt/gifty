@@ -12,6 +12,7 @@
   --color-border-muted: #dce5e4; /* dashed/lighter borders */
   --color-surface: #f0f4f4;    /* input bg, hover states */
   --color-surface-muted: #f8fafa; /* card grey, lighter surfaces */
+  --color-calendar-bg: #ebf3f2; /* calendar grey (nav, chips, day cells, etc.) */
   --font-display: 'Manrope', sans-serif;
   --radius: 0.5rem;
   --radius-lg: 1rem;

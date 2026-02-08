@@ -66,16 +66,10 @@ export function DashboardHeader() {
       <div className="flex items-center gap-8">
         <nav className="hidden lg:flex items-center gap-8">
           <Link
-            to="/"
-            className="text-foreground text-sm font-semibold hover:text-primary transition-colors"
-          >
-            Dashboard
-          </Link>
-          <Link
             to="/people"
             className="text-foreground text-sm font-semibold hover:text-primary transition-colors"
           >
-            Connections
+            My People
           </Link>
           <Link
             to="/calendar"
